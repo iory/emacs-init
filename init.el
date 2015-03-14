@@ -84,8 +84,8 @@
 (load "~/.emacs.d/inits/python-setting.el")
 ;;(load "~/.emacs.d/inits/ruby-setting.el")
 (load "~/.emacs.d/inits/auto-complete-setting.el")
-(load "~/.emacs.d/inits/any-setting.el")
 (load "~/.emacs.d/inits/trr-setting.el")
+(load "~/.emacs.d/inits/any-setting.el")
 
 ;; font-setting
 ;; (set-face-attribute 'default nil
