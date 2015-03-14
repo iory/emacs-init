@@ -1,2 +1,12 @@
 .*
 !/.gitignore
+
+# ignore directories
+/elpa
+/games
+/site-lisp
+
+history
+*.*~
+*.dat
+session.*
