@@ -191,5 +191,3 @@
 
 (require 'hiwin)
 (hiwin-activate)
-
-(require 'oniisama)

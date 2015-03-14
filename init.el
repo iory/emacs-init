@@ -44,7 +44,6 @@
     magit
     git-gutter
     quickrun
-    yasnippet
     dropdown-list
     slime
     smart-newline
@@ -73,8 +72,9 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/")
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
+(load "~/.emacs.d/site-lisp/site-lisp-path.el")
 (load "~/.emacs.d/inits/common.el")
-(load "~/.emacs.d/inits/tab-setting.el")
+;;(load "~/.emacs.d/inits/tab-setting.el")
 (load "~/.emacs.d/inits/direx-setting.el")
 (load "~/.emacs.d/inits/helm-setting.el")
 (load "~/.emacs.d/inits/server-setting.el")
