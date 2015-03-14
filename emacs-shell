@@ -1,0 +1,2 @@
+#!/bin/sh
+emacs -nw -Q -l ~/.emacs.d/elpa/save-load-path-20131228.1952/save-load-path.el -l ~/.emacs.d/emacs-shell-init.el -f shell
