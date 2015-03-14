@@ -69,10 +69,9 @@
     (dolist (pkg not-installed)
         (package-install pkg))))
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/")
-(add-to-list 'load-path "~/.emacs.d/elpa/")
 
-(load "~/.emacs.d/site-lisp/site-lisp-path.el")
+(add-to-list 'load-path "~/.emacs.d/elpa/")
+(load "~/.emacs.d/site-lisp-path.el")
 (load "~/.emacs.d/inits/common.el")
 ;;(load "~/.emacs.d/inits/tab-setting.el")
 (load "~/.emacs.d/inits/direx-setting.el")

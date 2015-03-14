@@ -1,0 +1,4 @@
+cd site-lisp
+git clone git@github.com:emacs-helm/helm-ls-git.git
+git clone git@github.com:kawabata/emacs-trr.git
+git clone --recursive git@github.com:capitaomorte/yasnippet.git

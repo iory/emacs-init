@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: publisher
+# key: publisher
+# binding: direct-keybinding
+# --
+(ros::publish "${0:topic}" ${1:msg})

@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: subscriber
+# key: subscriber
+# binding: direct-keybinding
+# --
+(ros::advertise "${0:topic-name}" ${1:msg-type} ${2:queue-size})
