@@ -2,22 +2,12 @@
 ;; @ general
 ;; common lisp
 
-;; C-x f でhome directoryから
 (cd "~/")
-(require 'cl)
 
-;;back up file を作らない
+;; don't make back up file
 (setq make-backup-files nil)
 
-;; package.elの設定
-(when (require 'package nil t)
-  (add-to-list 'package-archives
-	       '("marmalade" . "http://marmalade-repo.org/packages/"))
-  (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
-  (package-initialize))
-
-
-;; 文字コード
+;; literal code
 (set-language-environment "Japanese")
 (let ((ws window-system))
   (cond ((eq ws 'w32)
@@ -47,31 +37,16 @@
          (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Ricty")))))  ;; 日本語
 (set-foreground-color "#55ff55")
 
-;; load-path
-(setq load-path
-      (append
-       (list (expand-file-name "~/Dropbox/emacs.d/elisp")) load-path))
-
-;; スタートアップ非表示
+;; inhibit startup screen
 (setq inhibit-startup-screen t)
 
-;;　scratchの初期メッセージ消去
+;; delete initial scratch message
 (setq initial-scratch-message "")
 
-;; ツールバー非表示
-;;(tool-bar-mode -1)
-
-;;　メニューバーを非表示
-;;(menu-bar-mode -1)
-
-; スクロールバー非表示
-;;(set-scroll-bar-mode nil)
-
-;; タイトルバーにファイルのフルパス表示
+;; display full-path
 (setq frame-title-format
       (format "%%f - Emacs@%s" (system-name)))
 
-;; 行番号表示
 (global-linum-mode t)
 (set-face-attribute 'linum nil
 		    :foreground "#55ff55"
@@ -80,14 +55,6 @@
 ;; 背景色 and 文字色
 (set-background-color "black")
 (set-foreground-color "#55ff55")
-
-;; ;; 括弧の範囲を強調表示
-;; (show-paren-mode t)
-;; (setq show-paren-deray 0)
-;; (setq show-paren-style 'expresion)
-
-;; 括弧の範囲職
-;; (set-face-background 'show-paren-match-face "#500")
 
 ;; 選択領域の色
 (set-face-background 'region "#555")
@@ -135,14 +102,6 @@
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
-;; autoinstall
-(add-to-list 'load-path (expand-file-name "~/Dropbox/emacs.d/auto-install/"))
-(add-to-list 'load-path (expand-file-name "~/Dropbox/emacs.d/auto-install"))
-(require 'auto-install)
-(setq auto-install-directory "~/Dropbox/emacs.d/auto-install/")
-(auto-install-compatibility-setup)
-
-
 ;; compile キーのショートカット
 (define-key mode-specific-map "c" 'compile)
 
@@ -160,12 +119,6 @@
 
 ;; C-tをタブ切り替え
 (define-key global-map (kbd "C-t") 'other-window)
-
-(auto-insert-mode)
-(setq auto-insert-directory "~/Dropbox/emacs.d/insert/")
-(define-auto-insert "\\.cpp$" "c_plusplus-template.cpp")
-(define-auto-insert "\\.c$" "c-template.c")
-(define-auto-insert "\\.py$" "py-template.py")
 
 ;; 行末のwhitespaceを削除
 (setq delete-trailing-whitespace-exclude-patterns (list "\\.md$" "\\.markdown$"))

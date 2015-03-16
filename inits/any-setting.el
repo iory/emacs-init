@@ -1,14 +1,7 @@
-(add-to-list 'load-path "~/Dropbox/emacs.d/elisp/yatex/")
-
-;; emacs-nav
-;;(add-to-list 'load-path "~/Dropbox/emacs.d/emacs-nav/")
-;;(require 'nav)
-;;(global-set-key "\C-x\C-d" 'nav-toggle)
-
 (require 'smartparens-config)
 (smartparens-global-mode t)
 
-;; undoreeの設定
+;; undoree setting
 (require 'undo-tree)
 (global-undo-tree-mode t)
 (global-set-key (kbd "M-/") 'undo-tree-redo)
@@ -51,29 +44,7 @@
 (setq eldoc-idle-delay 0.2)
 (setq eldoc-minor-mode-string "")
 
-
-;; js2-mode
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
-;; haskel
-(add-to-list 'load-path "~/.emacs.d/site-lisp/haskell-mode-2.8.0")
-
-(require 'haskell-mode)
-(require 'haskell-cabal)
-
-(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
-(add-to-list 'auto-mode-alist '("\\.lhs$" . literate-haskell-mode))
-(add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
 (put 'downcase-region 'disabled nil)
-
-
-;; arduino-mode
-(setq load-path (cons "~/Dropbox/emacs.d/elisp/arduino-mode/" load-path))
-(load "arduino-mode")
-(setq auto-mode-alist (cons '("\\.pde$" . arduino-mode) auto-mode-alist))
-
-
 (setq process-coding-system-alist
       (cons '("gosh" utf-8 . utf-8) process-coding-system-alist))
 
