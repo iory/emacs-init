@@ -70,6 +70,12 @@
         (package-install pkg))))
 
 
+;; language-setting
+(require 'mozc)
+(set-language-environment "Japanese")
+(setq default-input-method "japanese-mozc")
+(prefer-coding-system 'utf-8)
+
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (load "~/.emacs.d/site-lisp-path.el")
 (load "~/.emacs.d/inits/common.el")
