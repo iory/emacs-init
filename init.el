@@ -81,6 +81,7 @@
           (lambda ()
             (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)
             ))
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; language-setting
 (require 'mozc)
@@ -109,3 +110,7 @@
 ;;(load "~/.emacs.d/inits/tab-setting.el")
 (load "~/.emacs.d/inits/utility.el")
 (load "~/.emacs.d/inits/yasnippet-setting.el")
+
+;; using ROS on Ubuntu
+(when (eq system-type 'gnu/linux)
+  (load "~/.emacs.d/inits/ros-setting.el"))
