@@ -6,13 +6,13 @@
                     :box nil)
 
 (set-face-attribute 'powerline-active1 nil
-                    :foreground "#000"
-                    :background "#333333"
+                    :foreground "#fff"
+                    :background "#222222"
                     :inherit 'mode-line)
 
 (set-face-attribute 'powerline-active2 nil
-                    :foreground "#000"
-                    :background "#333333"
+                    :foreground "#fff"
+                    :background "#555555"
                     :inherit 'mode-line)
 
 

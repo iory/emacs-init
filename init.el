@@ -42,7 +42,6 @@
     direx
     helm-cmd-t
     magit
-    modeline-git-branch
     git-gutter
     quickrun
     dropdown-list
