@@ -62,7 +62,6 @@
 ;;(require 'cl)
 (require 'tabbar nil t)
 
-;; scratch buffer以外をまとめてタブに表示する
 (setq tabbar-buffer-groups-function
       (lambda (b) (list "All Buffers")))
 

@@ -87,7 +87,6 @@
 (load "~/.emacs.d/inits/server-setting.el")
 (load "~/.emacs.d/inits/git-setting.el")
 (load "~/.emacs.d/inits/utility.el")
-(load "~/.emacs.d/inits/gauche-setting.el")
 (load "~/.emacs.d/inits/quickrun-setting.el")
 (load "~/.emacs.d/inits/python-setting.el")
 ;;(load "~/.emacs.d/inits/ruby-setting.el")

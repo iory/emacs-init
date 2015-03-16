@@ -113,6 +113,9 @@
 (tool-bar-mode -1)
 
 (global-set-key "\C-m" 'newline-and-indent)
+;; smart-newline
+(define-key global-map (kbd "C-m") 'smart-newline)
+
 (setq text-mode-hook 'turn-off-auto-fill)
 
 (setq system-uses-terminfo nil)

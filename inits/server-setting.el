@@ -1,4 +1,3 @@
 (require 'server)
-
-(unless (server-running-p) ;; 複数サーバ起動を防ぐ
+(unless (server-running-p)
   (server-start))
