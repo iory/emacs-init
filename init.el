@@ -42,6 +42,7 @@
     direx
     helm-cmd-t
     magit
+    modeline-git-branch
     git-gutter
     quickrun
     dropdown-list
@@ -80,18 +81,20 @@
 
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (load "~/.emacs.d/site-lisp-path.el")
-(load "~/.emacs.d/inits/common.el")
-;;(load "~/.emacs.d/inits/tab-setting.el")
-(load "~/.emacs.d/inits/direx-setting.el")
-(load "~/.emacs.d/inits/helm-setting.el")
-(load "~/.emacs.d/inits/server-setting.el")
-(load "~/.emacs.d/inits/git-setting.el")
-(load "~/.emacs.d/inits/utility.el")
-(load "~/.emacs.d/inits/quickrun-setting.el")
-(load "~/.emacs.d/inits/python-setting.el")
-;;(load "~/.emacs.d/inits/ruby-setting.el")
-(load "~/.emacs.d/inits/auto-complete-setting.el")
-(load "~/.emacs.d/inits/trr-setting.el")
+
 (load "~/.emacs.d/inits/any-setting.el")
+(load "~/.emacs.d/inits/auto-complete-setting.el")
+(load "~/.emacs.d/inits/common.el")
+(load "~/.emacs.d/inits/direx-setting.el")
+(load "~/.emacs.d/inits/git-setting.el")
+(load "~/.emacs.d/inits/helm-setting.el")
 (load "~/.emacs.d/inits/insert-setting.el")
+(load "~/.emacs.d/inits/python-setting.el")
 (load "~/.emacs.d/inits/powerline-setting.el")
+(load "~/.emacs.d/inits/quickrun-setting.el")
+;;(load "~/.emacs.d/inits/ruby-setting.el")
+(load "~/.emacs.d/inits/server-setting.el")
+(load "~/.emacs.d/inits/trr-setting.el")
+;;(load "~/.emacs.d/inits/tab-setting.el")
+(load "~/.emacs.d/inits/utility.el")
+(load "~/.emacs.d/inits/yasnippet-setting.el")
