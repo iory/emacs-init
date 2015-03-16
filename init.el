@@ -94,17 +94,3 @@
 (load "~/.emacs.d/inits/trr-setting.el")
 (load "~/.emacs.d/inits/any-setting.el")
 (load "~/.emacs.d/inits/insert-setting.el")
-
-;; font-setting
-;; (set-face-attribute 'default nil
-;;                     :family "Ricty"
-;;                     :height 120)
-;; (set-fontset-font (frame-parameter nil 'font)
-;;                   'japanese-jisx0208
-;;                   (cons "Ricty Discord" "iso10646-1"))
-;; (set-fontset-font (frame-parameter nil 'font)
-;;                   'japanese-jisx0212
-;;                   (cons "Ricty Discord" "iso10646-1"))
-;; (set-fontset-font (frame-parameter nil 'font)
-;;                   'katakana-jisx0201
-;;                   (cons "Ricty Discord" "iso10646-1"))

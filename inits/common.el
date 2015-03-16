@@ -21,21 +21,15 @@
          (setq file-name-coding-system 'utf-8-hfs)
          (setq locale-coding-system 'utf-8-hfs))))
 
-;; Windowsで英数と日本語にMeiryoを指定
-;; Macで英数と日本語にRictyを指定
-(let ((ws window-system))
-  (cond ((eq ws 'w32)
-         (set-face-attribute 'default nil
-                             ;;:family "Meiryo"  ;; 英数
-                             :family "Ricty Diminished Discord"
-                             :height 140)
-         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Meiryo")))  ;; 日本語
-        ((eq ws 'ns)
-         (set-face-attribute 'default nil
-                             :family "Ricty"  ;; 英数
-                             :height 120)
-         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Ricty")))))  ;; 日本語
+;; foreground setting
 (set-foreground-color "#55ff55")
+(global-linum-mode t)
+(set-face-attribute 'linum nil
+		    :foreground "#55ff55"
+		    :height 0.7)
+
+;; selected area's color
+(set-face-background 'region "#555")
 
 ;; inhibit startup screen
 (setq inhibit-startup-screen t)
@@ -43,98 +37,60 @@
 ;; delete initial scratch message
 (setq initial-scratch-message "")
 
-;; display full-path
+;; display full-path on title
 (setq frame-title-format
       (format "%%f - Emacs@%s" (system-name)))
 
-(global-linum-mode t)
-(set-face-attribute 'linum nil
-		    :foreground "#55ff55"
-		    :height 0.7)
-
-;; 背景色 and 文字色
-(set-background-color "black")
-(set-foreground-color "#55ff55")
-
-;; 選択領域の色
-(set-face-background 'region "#555")
-
-;; 行末の空白を強調表示
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "#b14770")
 
 ;; yes or no to y or n
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; 編集場所を記憶する
+;; save save-place
 (load "saveplace")
 (setq-default save-place t)
 
-;; 最近使ったファイルをメニューに表示
+;; display recent file
 (recentf-mode t)
-
-;; 最近使ったファイルの表示数
 (setq recentf-max-menu-items 10)
-
-;; 最近開いたファイルの保存数を増やす
 (setq recentf-max-saved-items 3000)
 
-;; ミニバッファの履歴を保存する
+;; save hist
 (savehist-mode 1)
-
-;; ミニバッファの履歴の保存数を増やす
 (setq history-length 3000)
 
-;; 行間
+;; line setting
 (setq-default line-spacing 0)
-
-;; フレームの透明度
-;;(set-frame-parameter (selected-frame) 'alpha '(0.85))
-
-;; モードラインに行番号を表示
 (line-number-mode t)
-
-;; モードラインに列番号表示
 (column-number-mode t)
 
-;; C-Ret で矩形選択
-;; 詳しいキーバインド操作：http://dev.ariel-networks.com/articles/emacs/part5/
+;; C-Ret
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
-;; compile キーのショートカット
+;; compile key shortcut
 (define-key mode-specific-map "c" 'compile)
 
-;; ctrl-k で改行コードも含めて行を削除
 (setq kill-whole-line t)
-
-;; regionを[delete]で一括削除
 (delete-selection-mode t)
-
-;; C-hにBackspaceを割り当て(M-hでヘルプは表示できる)
 (define-key global-map (kbd "C-h") 'delete-backward-char)
 
-;; C-lに置き換えを割り当て
+;; replace-regexp
 (global-set-key (kbd "C-l") 'replace-regexp)
 
-;; C-tをタブ切り替え
+;; C-t as tab change
 (define-key global-map (kbd "C-t") 'other-window)
 
-;; 行末のwhitespaceを削除
+;; delete whitespace
 (setq delete-trailing-whitespace-exclude-patterns (list "\\.md$" "\\.markdown$"))
-
 (defun delete-trailing-whitespace-with-exclude-pattern ()
   (interactive)
   (cond ((equal nil (loop for pattern in delete-trailing-whitespace-exclude-patterns
                           thereis (string-match pattern buffer-file-name)))
          (delete-trailing-whitespace))))
-
 (add-hook 'before-save-hook 'delete-trailing-whitespace-with-exclude-pattern)
 
-
-
-;; ファイル末尾の改行を削除
-;; http://www.emacswiki.org/emacs/DeletingWhitespace
 (defun my-delete-trailing-blank-lines ()
   "Deletes all blank lines at the end of the file."
   (interactive)
@@ -146,29 +102,23 @@
 
 (add-hook 'before-save-hook 'my-delete-trailing-blank-lines)
 
-;; tabをspaceに変換
+;; tab->space
 (setq-default tab-width 4 indent-tabs-mode nil)
 
-;; 音を消す
 (setq visible-bell t)
 
-;; ファイルを探すときに大文字小文字を区別しない
 (setq completion-ignore-case t)
 
-;; メニューバーを消す、ツールバーを消す
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-;; 改行とともにインデント
 (global-set-key "\C-m" 'newline-and-indent)
-
-;; 自動改行off
 (setq text-mode-hook 'turn-off-auto-fill)
 
-;; Emacs が保持する terminfo を利用する
 (setq system-uses-terminfo nil)
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
 
 (defun other-window-or-split ()
   (interactive)
@@ -203,7 +153,6 @@
 
 (setq windmove-wrap-around t)
 (windmove-default-keybindings)
-
 
 ;; veiw-mode
 (setq view-read-only t)
@@ -249,14 +198,12 @@
   (define-key view-mode-map " " 'scroll-up))
 (add-hook 'view-mode-hook 'view-mode-hook0)
 
-;; 書き込み不能なファイルはview-modeで開くように
 (defadvice find-file
   (around find-file-switch-to-view-file (file &optional wild) activate)
   (if (and (not (file-writable-p file))
            (not (file-directory-p file)))
       (view-file file)
     ad-do-it))
-;; 書き込み不能な場合はview-modeを抜けないように
 (defvar view-mode-force-exit nil)
 (defmacro do-not-exit-view-mode-unless-writable-advice (f)
   `(defadvice ,f (around do-not-exit-view-mode-unless-writable activate)
@@ -280,8 +227,6 @@
        default-frame-alist)
       )
 
-;; リージョンが活性化していればリージョン削除
-;; 非活性であれば、直前の単語を削除
 (defun kill-region-or-backward-kill-word ()
   (interactive)
   (if (region-active-p)
@@ -303,7 +248,6 @@
           (split-window-vertically)
         (split-window-horizontally)))
 (define-key windmove-map "s" 'split-window-conditional)
-
 
 (setq
    ;; クリップボードでコピー＆ペーストできるようにする

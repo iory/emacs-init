@@ -1,4 +1,4 @@
-;; auto-complete
+;; auto-complete setting
 (require 'auto-complete)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -23,7 +23,6 @@
 ;; (defun my-ac-cc-mode-setup ()
 ;;tなら自動で補完画面がでる．nilなら補完キーによって出る
 (setq ac-auto-start t)
-;; (setq ac-clang-prefix-header "~/Dropbox/emacs.d/stdafx.pch")
 (setq ac-clang-flags
       '("-std=c++11" "-w" "-ferror-limit" "1"))
 ;;(setq ac-clang-flags '("-w" "-ferror-limit" "1"))
@@ -49,7 +48,4 @@
   (global-auto-complete-mode t))
 (my-ac-config)
 
-;;補完キー指定
-;; (ac-set-trigger-key "TAB")
-;;ヘルプ画面が出るまでの時間（秒）
 (setq ac-quick-help-delay 0.1)
