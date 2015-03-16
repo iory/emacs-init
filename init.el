@@ -47,12 +47,12 @@
     dropdown-list
     slime
     smart-newline
-    powerline
     use-package
     helm-swoop
     helm-migemo
     migemo
     evil
+    powerline
     powerline-evil
     save-load-path
     mwim
@@ -94,3 +94,4 @@
 (load "~/.emacs.d/inits/trr-setting.el")
 (load "~/.emacs.d/inits/any-setting.el")
 (load "~/.emacs.d/inits/insert-setting.el")
+(load "~/.emacs.d/inits/powerline-setting.el")

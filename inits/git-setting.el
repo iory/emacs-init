@@ -1,6 +1,7 @@
 ;; git setting
 (require 'magit)
 
+(require 'modeline-git-branch)
 
 ;; git gutter setting
 (require 'git-gutter)
