@@ -337,8 +337,6 @@
 
 (global-set-key "\C-w" 'kill-region-or-backward-kill-word)
 
-
-
 (define-prefix-command 'windmove-map)
     (global-set-key (kbd "C-q") 'windmove-map)
     (define-key windmove-map "b" 'windmove-left)

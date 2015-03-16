@@ -75,6 +75,7 @@
 (set-language-environment "Japanese")
 (setq default-input-method "japanese-mozc")
 (prefer-coding-system 'utf-8)
+(define-key global-map (kbd "C-\\") 'mozc-mode)
 
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (load "~/.emacs.d/site-lisp-path.el")

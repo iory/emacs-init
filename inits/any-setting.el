@@ -25,7 +25,6 @@
 (smartparens-global-mode t)
 (show-smartparens-global-mode t)
 
-
 ;; volatile-highlights
 ;; undo や redo した場所がhighlightされる
 (require 'volatile-highlights)
