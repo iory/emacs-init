@@ -58,6 +58,7 @@
     mwim
     howdoi
     hiwin
+    neotree
     ))
 
 ;; automatically install

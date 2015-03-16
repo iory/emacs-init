@@ -1,5 +1,8 @@
+;; git setting
 (require 'magit)
 
+
+;; git gutter setting
 (require 'git-gutter)
 
 ;; If you enable global minor mode
