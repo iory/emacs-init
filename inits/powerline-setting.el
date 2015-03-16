@@ -15,5 +15,4 @@
                     :background "#555555"
                     :inherit 'mode-line)
 
-
 (powerline-default-theme)

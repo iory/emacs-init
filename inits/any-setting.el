@@ -3,6 +3,10 @@
 (smartparens-global-mode t)
 (show-smartparens-global-mode t)
 
+;; undohist
+(require 'undohist)
+(undohist-initialize)
+
 ;; undoree setting
 (require 'undo-tree)
 (global-undo-tree-mode t)

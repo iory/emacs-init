@@ -19,46 +19,49 @@
     anzu
     cmake-project
     cmake-mode
-    open-junk-file
-    tabbar
-    helm
-    undo-tree
-    smartparens
-    popwin
-    helm-ag
-    redo+
-    nav
-    volatile-highlights
-    lispxmp
-    haskell-mode
-    yaml-mode
-    jedi
+    direx
+    dropdown-list
+    exec-path-from-shell
+    evil
     flymake
     flymake-checkers
     flylisp
     flymake-cppcheck
     flycheck
     flycheck-google-cpplint
-    direx
-    helm-cmd-t
-    magit
+    gitconfig-mode
+    gitignore-mode
     git-gutter
-    quickrun
-    dropdown-list
-    slime
-    smart-newline
-    use-package
+    helm
     helm-swoop
     helm-migemo
-    migemo
-    evil
-    powerline
-    powerline-evil
-    save-load-path
-    mwim
+    helm-ag
+    helm-cmd-t
     howdoi
     hiwin
+    haskell-mode
+    jedi
+    lispxmp
+    magit
+    markdown-mode
+    migemo
+    mwim
     neotree
+    open-junk-file
+    popwin
+    powerline
+    powerline-evil
+    quickrun
+    redo+
+    save-load-path
+    smartparens
+    smart-newline
+    tabbar
+    undo-tree
+    undohist
+    use-package
+    volatile-highlights
+    yaml-mode
     ))
 
 ;; automatically install
@@ -70,6 +73,14 @@
     (dolist (pkg not-installed)
         (package-install pkg))))
 
+;; path setting
+(exec-path-from-shell-initialize)
+
+;; avoid strange character on shell
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)
+            ))
 
 ;; language-setting
 (require 'mozc)
@@ -88,6 +99,7 @@
 (load "~/.emacs.d/inits/git-setting.el")
 (load "~/.emacs.d/inits/helm-setting.el")
 (load "~/.emacs.d/inits/insert-setting.el")
+(load "~/.emacs.d/inits/markdown-setting.el")
 (load "~/.emacs.d/inits/python-setting.el")
 (load "~/.emacs.d/inits/powerline-setting.el")
 (load "~/.emacs.d/inits/quickrun-setting.el")

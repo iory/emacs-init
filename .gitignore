@@ -5,6 +5,7 @@
 /elpa
 /games
 /site-lisp
+/undohist
 
 history
 *.*~
