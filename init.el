@@ -107,4 +107,4 @@
 ;; using ROS on Ubuntu
 (when (eq system-type 'gnu/linux)
   (load "~/.emacs.d/inits/ros-setting.el")
-  (load "~/.emacs.d/inits/mozc-setting.el")
+  (load "~/.emacs.d/inits/mozc-setting.el"))
