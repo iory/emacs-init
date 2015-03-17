@@ -1,5 +1,6 @@
 ;; git setting
 (require 'magit)
+(global-set-key (kbd "M-m") 'magit-status)
 
 ;; git gutter setting
 (require 'git-gutter)
