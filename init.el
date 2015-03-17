@@ -83,13 +83,6 @@
             ))
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-;; language-setting
-(require 'mozc)
-(set-language-environment "Japanese")
-(setq default-input-method "japanese-mozc")
-(prefer-coding-system 'utf-8)
-(define-key global-map (kbd "C-\\") 'mozc-mode)
-
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (load "~/.emacs.d/site-lisp-path.el")
 
@@ -113,4 +106,5 @@
 
 ;; using ROS on Ubuntu
 (when (eq system-type 'gnu/linux)
-  (load "~/.emacs.d/inits/ros-setting.el"))
+  (load "~/.emacs.d/inits/ros-setting.el")
+  (load "~/.emacs.d/inits/mozc-setting.el")
