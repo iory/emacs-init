@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ros_callback
+# key: roscallback
+# binding: direct-keybinding
+# --
+void ${0:callback}(const ${1:std_msgs::String}::ConstPtr& msg){
+     ${2:ROS_INFO("I heard: [%s]", msg->data.c_str());}
+}

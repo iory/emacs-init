@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ros_subscriber
+# key: subscriber
+# binding: direct-keybinding
+# --
+ros::Subscriber ${0:sub} = ${1:NodeHandle}.subscribe("${2:topic_name}", ${3:100}, ${4:callback_function});
