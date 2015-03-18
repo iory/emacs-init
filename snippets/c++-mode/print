@@ -1,0 +1,13 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: print
+# key: print
+# binding: direct-keybinding
+# --
+template <class InpputIterator>
+void print(InpputIterator first, InpputIterator last){
+    std::cout << "[";
+    while((first+1) != last){
+        std::cout << *first++ << ", ";
+    }
+    std::cout << *first << "]" << std::endl;
+}
