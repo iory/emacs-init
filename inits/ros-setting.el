@@ -4,5 +4,5 @@
 
 ;; Author: iori
 
-(add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
-(require 'rosemacs-config)
+;; (add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
+;; (require 'rosemacs-config)
