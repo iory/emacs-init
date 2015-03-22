@@ -1,0 +1,23 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: lexical
+# key: lexical
+# binding: direct-keybinding
+# --
+
+#include <boost/lexical_cast.hpp>
+
+template<class From>
+class lexical_cast_t{
+  From from_;
+public:
+  lexical_cast_t(From from):from_(from){}
+  template <class To>
+  operator To() const {
+    return boost::lexical_cast<To>(from_);
+  }
+};
+
+template <class From>
+lexical_cast_t<From> lexical(From from){
+  return lexical_cast_t<From>(from);
+}
