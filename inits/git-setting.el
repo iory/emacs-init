@@ -1,6 +1,8 @@
 ;; git setting
 (require 'magit)
 (global-set-key (kbd "M-m") 'magit-status)
+(global-set-key (kbd "C-x v d") 'magit-status)
+(global-set-key (kbd "C-x v l") 'magit-key-mode-popup-logging)
 
 ;; git gutter setting
 (require 'git-gutter)
