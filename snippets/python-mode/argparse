@@ -1,0 +1,14 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: argparse
+# key: argparse
+# binding: direct-keybinding
+# --
+arg_fmt = argparse.RawTextHelpFormatter
+parser = argparse.ArgumentParser(formatter_class=arg_fmt,
+                                 description=main.__doc__)
+required = parser.add_argument_group('required arguments')
+required.add_argument(
+    '-f', '--file', required=True,
+    help='select file.'
+)
+args = parser.parse_args(sys.argv[1:])
