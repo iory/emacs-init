@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: append
+# key: append
+# binding: direct-keybinding
+# --
+template <class T>
+void append(std::vector<T>& a, std::vector<T>& b){
+    a.insert(a.begin(), b.begin(), b.end());
+}
