@@ -54,6 +54,7 @@
     quickrun
     redo+
     save-load-path
+    sequential-command
     smartparens
     smart-newline
     tabbar
@@ -99,6 +100,7 @@
 (load "~/.emacs.d/inits/quickrun-setting.el")
 ;;(load "~/.emacs.d/inits/ruby-setting.el")
 (load "~/.emacs.d/inits/server-setting.el")
+(load "~/.emacs.d/inits/tools.el")
 (load "~/.emacs.d/inits/trr-setting.el")
 ;;(load "~/.emacs.d/inits/tab-setting.el")
 (load "~/.emacs.d/inits/utility.el")
