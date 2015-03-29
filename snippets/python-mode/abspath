@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: abspath
+# key: abspath
+# binding: direct-keybinding
+# --
+os.path.abspath(${0:'.'})
