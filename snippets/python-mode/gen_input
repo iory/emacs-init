@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: gen_input
+# key: gen_input
+# binding: direct-keybinding
+# --
+def gen_input():
+    while True:
+        try:
+            yield int(raw_input())
+        except EOFError:
+            break
