@@ -1,5 +1,6 @@
 .*
 !/.gitignore
+*.elc
 
 # ignore directories
 /elpa

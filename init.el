@@ -13,6 +13,7 @@
 (defvar installing-package-list
   '(
     ;; package list to use
+    auto-async-byte-compile
     auto-complete
     auto-complete-clang-async
     ace-isearch
@@ -89,6 +90,7 @@
 (load "~/.emacs.d/site-lisp-path.el")
 
 (require 'any-setting)
+(require 'byte-compile-setting)
 (require 'auto-complete-setting)
 (require 'common)
 (require 'direx-setting)
@@ -111,28 +113,3 @@
 (when (eq system-type 'gnu/linux)
   (require 'ros-setting)
   (require 'mozc-setting))
-
-;; (load "~/.emacs.d/inits/any-setting.el")
-;; (load "~/.emacs.d/inits/auto-complete-setting.el")
-;; (load "~/.emacs.d/inits/common.el")
-;; (load "~/.emacs.d/inits/direx-setting.el")
-;; (load "~/.emacs.d/inits/git-setting.el")
-;; (load "~/.emacs.d/inits/helm-setting.el")
-;; (load "~/.emacs.d/inits/insert-setting.el")
-;; (load "~/.emacs.d/inits/markdown-setting.el")
-;; (load "~/.emacs.d/inits/python-setting.el")
-;; (load "~/.emacs.d/inits/powerline-setting.el")
-;; (load "~/.emacs.d/inits/quickrun-setting.el")
-;; ;;(load "~/.emacs.d/inits/ruby-setting.el")
-;; (load "~/.emacs.d/inits/server-setting.el")
-;; ;; (load "~/.emacs.d/inits/tools.el")
-;; (require 'tools)
-;; (load "~/.emacs.d/inits/trr-setting.el")
-;; ;;(load "~/.emacs.d/inits/tab-setting.el")
-;; (load "~/.emacs.d/inits/utility.el")
-;; (load "~/.emacs.d/inits/yasnippet-setting.el")
-
-;; ;; using ROS on Ubuntu
-;; (when (eq system-type 'gnu/linux)
-;;   (load "~/.emacs.d/inits/ros-setting.el")
-;;   (load "~/.emacs.d/inits/mozc-setting.el"))
