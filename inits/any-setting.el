@@ -95,3 +95,5 @@
 
 ;;; ace-isearch
 (global-ace-isearch-mode 1)
+
+(provide 'any-setting)

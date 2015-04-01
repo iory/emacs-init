@@ -16,3 +16,5 @@
   ((eq system-type 'darwi ;; if you use mac system, open file by preview.
     (setq dvi2-command "open -a Preview")))
 (add-hook 'yatex-mode-hook '(lambda () (setq auto-fill-function nil)))
+
+(provide 'yatex-setting)

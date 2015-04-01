@@ -21,3 +21,5 @@
   '(progn
      (flycheck-add-mode 'python-pylint 'yapm-mode)
      (flycheck-add-mode 'python-flake8 'yapm-mode)))
+
+(provide 'python-setting)

@@ -16,3 +16,5 @@
                     :inherit 'mode-line)
 
 (powerline-default-theme)
+
+(provide 'powerline-setting)

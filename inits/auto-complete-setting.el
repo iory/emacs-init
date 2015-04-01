@@ -49,3 +49,5 @@
 (my-ac-config)
 
 (setq ac-quick-help-delay 0.1)
+
+(provide 'auto-complete-setting)

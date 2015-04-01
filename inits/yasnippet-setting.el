@@ -4,3 +4,5 @@
               "~/.emacs.d/site-lisp/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
+
+(provide 'yasnippet-setting)

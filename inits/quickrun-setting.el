@@ -27,3 +27,5 @@
 
 ;;(quickrun-set-default "python" "python3")
 (quickrun-set-default "lisp" "commonlisp")
+
+(provide 'quickrun-setting)

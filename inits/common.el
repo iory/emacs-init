@@ -253,16 +253,18 @@
 (define-key windmove-map "s" 'split-window-conditional)
 
 (setq
-   ;; クリップボードでコピー＆ペーストできるようにする
+   ;; クリップボードでコピー＆ペーストできるようにする
    x-select-enable-clipboard t
-   ;; PRIMARY selectionを使う(Windowsでは対象外)
+   ;; PRIMARY selectionを使う(Windowsでは対象外)
    x-select-enable-primary t
-   ;; クリップボードでコピー・カットした文字列を
-   ;; キルリングにも保存させる
+   ;; クリップボードでコピー・カットした文字列を
+   ;; キルリングにも保存させる
    save-interprogram-paste-before-kill t
-   ;; エラー時などはベル音ではなくて画面を1回点滅させる
+   ;; エラー時などはベル音ではなくて画面を1回点滅させる
    visible-bell t
-   ;; バックアップファイルはカレントディレクトリではなく
+   ;; バックアップファイルはカレントディレクトリではなく
    ;; ~/.emacs.d/backups 以下に保存する
    backup-directory-alist `(("." . ,(concat user-emacs-directory
                                             "backups"))))
+
+(provide 'common)

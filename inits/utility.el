@@ -42,3 +42,5 @@
   (c-set-offset 'innamespace 0)
   (c-set-offset 'arglist-close 0))
 (add-hook 'c-mode-common-hook 'add-c-mode-common-conf)
+
+(provide 'utility)

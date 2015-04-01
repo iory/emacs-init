@@ -6,3 +6,5 @@
 
 ;; (add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
 ;; (require 'rosemacs-config)
+
+(provide 'ros-setting)

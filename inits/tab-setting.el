@@ -110,3 +110,5 @@
 
 
 (global-set-key (kbd "s-w") 'kill-this-buffer)
+
+(provide 'tab-setting)

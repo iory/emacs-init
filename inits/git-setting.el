@@ -28,3 +28,5 @@
 
 ;; Revert current hunk
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+
+(provide 'git-setting)
