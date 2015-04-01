@@ -267,4 +267,20 @@
    backup-directory-alist `(("." . ,(concat user-emacs-directory
                                             "backups"))))
 
+;;; Get current path and put it to clipboard
+(defun get-current-path-to-clipboard ()
+  (interactive)
+  (let ((file-path buffer-file-name)
+        (dir-path default-directory))
+    (cond (file-path
+           (kill-new (expand-file-name file-path))
+           (message "This file path is on the clipboard!"))
+          (dir-path
+           (kill-new (expand-file-name dir-path))
+           (message "This directory path is on the clipboard!"))
+          (t
+           (error-message-string "Fail to get path name.")
+           ))))
+(global-set-key (kbd "C-c C-c p") 'put-current-path-to-clipboard)
+
 (provide 'common)

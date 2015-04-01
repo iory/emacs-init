@@ -90,7 +90,7 @@
 (load "~/.emacs.d/site-lisp-path.el")
 
 (require 'any-setting)
-(require 'byte-compile-setting)
+;; (require 'byte-compile-setting)
 (require 'auto-complete-setting)
 (require 'common)
 (require 'direx-setting)
