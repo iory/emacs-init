@@ -1,0 +1,15 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: pow
+# key: pow
+# binding: direct-keybinding
+# --
+template<class T>
+T pow(T x,int n){
+    T ret = 1;
+    while(n){
+        if(n&1)ret *= x;
+        x *= x;
+        n >>= 1;
+    }
+    return ret;
+}

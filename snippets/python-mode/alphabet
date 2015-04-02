@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: alphabet
+# key: alphabet
+# binding: direct-keybinding
+# --
+alphabet = "".join([chr(i).lower() for i in range(ord('A'), ord('Z') + 1)])

@@ -1,0 +1,21 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: eratos
+# key: eratos
+# binding: direct-keybinding
+# --
+std::vector<int> eratos(int limit){
+    std::vector<int> primes;
+    if(limit <= 1)return primes;
+    std::vector<bool> used(limit,true);
+    used[0] = used[1] = false;
+
+    for(int i=0;i<limit;++i){
+        if(used[i]){
+            primes.push_back(i);
+            for(int j=i*2;j < limit;j += i){
+                used[j] = false;
+            }
+        }
+    }
+    return primes;
+}
