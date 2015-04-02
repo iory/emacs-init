@@ -30,6 +30,7 @@
     flymake-cppcheck
     flycheck
     flycheck-google-cpplint
+    fullscreen-mode
     gitconfig-mode
     gitignore-mode
     git-gutter
@@ -89,6 +90,8 @@
 (add-to-list 'load-path "~/.emacs.d/inits/")
 (load "~/.emacs.d/site-lisp-path.el")
 
+(require 'tools)
+
 (require 'any-setting)
 ;; (require 'byte-compile-setting)
 (require 'auto-complete-setting)
@@ -103,7 +106,6 @@
 (require 'quickrun-setting)
 ;; (require 'ruby-setting)
 (require 'server-setting)
-(require 'tools)
 (require 'trr-setting)
 ;; (require 'tab-setting)
 (require 'utility)
@@ -113,3 +115,5 @@
 (when (eq system-type 'gnu/linux)
   (require 'ros-setting)
   (require 'mozc-setting))
+
+(global-set-key (kbd "C-x m") 'magit-status) ;; don't use email on emacs

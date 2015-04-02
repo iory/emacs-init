@@ -1,6 +1,7 @@
 ;; git setting
 (require 'magit)
 (global-set-key (kbd "M-m") 'magit-status)
+(global-set-key (kbd "C-x m") 'magit-status) ;; don't use email on emacs
 (global-set-key (kbd "C-x v d") 'magit-status)
 (global-set-key (kbd "C-x v l") 'magit-key-mode-popup-logging)
 
@@ -28,5 +29,5 @@
 
 ;; Revert current hunk
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
-
+1
 (provide 'git-setting)

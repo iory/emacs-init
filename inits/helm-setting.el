@@ -29,6 +29,7 @@
 
 (global-set-key (kbd "M-y")'helm-show-kill-ring)
 (define-key helm-map (kbd "C-j") 'helm-maybe-exit-minibuffer)
+(global-set-key (kbd "M-x") 'helm-M-x)
 ;; (define-key helm-map (kbd "M-j") 'helm-select-3rd-action)
 ;; (global-set-key (kbd "C-c y") 'helm-show-kill-ring)
 
