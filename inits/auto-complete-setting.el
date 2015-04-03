@@ -1,4 +1,5 @@
 ;; auto-complete setting
+
 (require 'auto-complete)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -12,46 +13,46 @@
 (add-hook 'c-mode-hook '(setq ac-sources (append ac-sources '(ac-source-c-headers))))
 
 (defun ac-cc-mode-setup ()
+  ;; (setq ac-auto-start t)
   (setq ac-clang-complete-executable (expand-file-name "~/.emacs.d/bin/clang-complete"))
   (setq ac-sources (append '(ac-source-clang-async) ac-sources))
-  (setq ac-clang-cflags (mapcar (lambda (item)
-                                  (concat "-I" (expand-file-name item)))
-                                  (split-string "/usr/include/c++/4.2.1")))
   (setq ac-clang-cflags (append '("-std=c++1y") ac-clang-cflags))
   (ac-clang-launch-completion-process))
 (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
 (add-hook 'c++-mode-common-hook 'ac-cc-mode-setup)
 (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-(global-auto-complete-mode t)
 
-;; (defun my-ac-cc-mode-setup ()
-;;tなら自動で補完画面がでる．nilなら補完キーによって出る
-(setq ac-auto-start t)
-(setq ac-clang-flags
-      '("-std=c++11" "-w" "-ferror-limit" "1"))
-;;(setq ac-clang-flags '("-w" "-ferror-limit" "1"))
-(setq ac-sources (append '(ac-source-clang
-			   ac-source-yasnippet
-			   ac-source-gtags)
-			 ac-sources))
+(global-set-key "\M-/" 'ac-start)
+;; C-n/C-p で候補を選択
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
-(defun my-ac-config ()
-  (global-set-key "\M-/" 'ac-start)
-  ;; C-n/C-p で候補を選択
-  (define-key ac-complete-mode-map "\C-n" 'ac-next)
-  (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+;; add C-v in ac-complete-mode-map
+(defun ac-next-page ()
+  "Select next candidate."
+  (interactive)
+  (when (ac-menu-live-p)
+    (when (popup-hidden-p ac-menu)
+      (ac-show-menu))
+    (dotimes (i 10) (popup-next ac-menu))
+    (if (eq this-command 'ac-next)
+        (setq ac-dwim-enable t))))
 
-  (setq-default ac-sources '(ac-source-abbrev
-			     ac-source-dictionary
-			     ac-source-words-in-same-mode-buffers))
-  (add-hook 'c++-mode-hook 'ac-cc-mode-setup)
-  (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
-  (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
-  (add-hook 'ruby-mode-hook 'ac-css-mode-setup)
-  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-  (global-auto-complete-mode t))
-(my-ac-config)
+(defun ac-previous-page ()
+  "Select previous candidate."
+  (interactive)
+  (when (ac-menu-live-p)
+    (when (popup-hidden-p ac-menu)
+      (ac-show-menu))
+    (dotimes (i 10) (popup-previous ac-menu))
+    (if (eq this-command 'ac-previous)
+        (setq ac-dwim-enable t))))
+
+(define-key ac-complete-mode-map "\C-v" 'ac-next-page)
+(define-key ac-complete-mode-map "\M-v" 'ac-previous-page)
 
 (setq ac-quick-help-delay 0.1)
+(global-auto-complete-mode t)
+
 
 (provide 'auto-complete-setting)
