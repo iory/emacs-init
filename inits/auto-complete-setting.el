@@ -6,13 +6,17 @@
 (setq ac-modes (append ac-modes '(objc-mode)))
 
 (require 'auto-complete-clang-async)
-(require 'auto-complete-clang-async)
+(require 'auto-complete-c-headers)
+
+(add-hook 'c++-mode-hook '(setq ac-sources (append ac-sources '(ac-source-c-headers))))
+(add-hook 'c-mode-hook '(setq ac-sources (append ac-sources '(ac-source-c-headers))))
+
 (defun ac-cc-mode-setup ()
   (setq ac-clang-complete-executable (expand-file-name "~/.emacs.d/bin/clang-complete"))
   (setq ac-sources (append '(ac-source-clang-async) ac-sources))
   (setq ac-clang-cflags (mapcar (lambda (item)
                                   (concat "-I" (expand-file-name item)))
-                                  (split-string "~/local/llvm/lib/clang/3.4/include")))
+                                  (split-string "/usr/include/c++/4.2.1")))
   (setq ac-clang-cflags (append '("-std=c++1y") ac-clang-cflags))
   (ac-clang-launch-completion-process))
 (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)

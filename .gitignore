@@ -7,6 +7,9 @@
 /games
 /site-lisp
 /undohist
+/bin
+
+!/bin/emacs-shell
 
 history
 *.*~

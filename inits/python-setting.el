@@ -11,18 +11,16 @@
 (add-hook 'python-mode-hook 'jedi:ac-setup)
 (define-key jedi-mode-map (kbd "<C-tab>") nil)
 
-(defun tnoda/turn-on-flycheck-mode ()
-  (flycheck-mode 1))
-(add-hook 'python-mode-hook 'tnoda/turn-on-flycheck-mode)
-;; flychek
-(add-hook 'python-mode-hook 'flycheck-mode)
+;; (defun tnoda/turn-on-flycheck-mode ()
+;;   (flycheck-mode 1))
+;; (add-hook 'python-mode-hook 'tnoda/turn-on-flycheck-mode)
+;; ;; flychek
+;; (add-hook 'python-mode-hook 'flycheck-mode)
 
-(eval-after-load 'flycheck
-  '(progn
-     (flycheck-add-mode 'python-pylint 'yapm-mode)
-     (flycheck-add-mode 'python-flake8 'yapm-mode)))
-
-(provide 'python-setting)
+;; (eval-after-load 'flycheck
+;;   '(progn
+;;      (flycheck-add-mode 'python-pylint 'yapm-mode)
+;;      (flycheck-add-mode 'python-flake8 'yapm-mode)))
 
 (require 'flymake)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
@@ -42,3 +40,5 @@
     (let ((help (get-char-property (point) 'help-echo)))
       (if help (message "%s" help)))))
 (add-hook 'post-command-hook 'flymake-show-help)
+
+(provide 'python-setting)

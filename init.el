@@ -15,7 +15,7 @@
     ;; package list to use
     auto-async-byte-compile
     auto-complete
-    auto-complete-clang-async
+    auto-complete-c-headers
     ace-isearch
     anzu
     cmake-project
@@ -39,6 +39,7 @@
     helm-migemo
     helm-ag
     helm-cmd-t
+    helm-projectile
     howdoi
     hiwin
     haskell-mode
@@ -53,6 +54,7 @@
     popwin
     powerline
     powerline-evil
+    projectile
     quickrun
     redo+
     save-load-path
@@ -96,6 +98,7 @@
 ;; (require 'byte-compile-setting)
 (require 'auto-complete-setting)
 (require 'common)
+(require 'c-setting)
 (require 'direx-setting)
 (require 'git-setting)
 (require 'helm-setting)

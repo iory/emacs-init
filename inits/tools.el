@@ -79,6 +79,16 @@
            ))))
 (global-set-key (kbd "C-c C-p") 'get-current-path-to-clipboard)
 
+(defun get-path ()
+  (interactive)
+  (let ((dir-path default-directory))
+    (cond (dir-path
+           (kill-new (expand-file-name dir-path))
+           (message "This directory path is on the clipboard!"))
+          (t
+           (error-message-string "Fail to get path name.")
+           ))))
+
 (defun shell-command->string (cmd)
   (let ((r (shell-command-to-string cmd)))
     (substring-no-properties r 0 (1- (length r)))))
