@@ -31,6 +31,11 @@
 ;; selected area's color
 (set-face-background 'region "#555")
 
+;; if you like ubuntu default terminal background color,
+;; comment out following line.
+;; (set-foreground-color "white")
+;; (set-background-color "#300A24")
+
 ;; inhibit startup screen
 (setq inhibit-startup-screen t)
 
@@ -43,6 +48,10 @@
 
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "#b14770")
+
+(setq ansi-color-names-vector
+      ["black" "red" "green3" "gold1" "deep sky blue" "magenta" "cyan" "white"])
+(setq ansi-color-map (ansi-color-make-color-map))
 
 ;; yes or no to y or n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -77,7 +86,7 @@
 (define-key global-map (kbd "C-h") 'delete-backward-char)
 
 ;; replace-regexp
-(global-set-key (kbd "C-l") 'replace-regexp)
+;; (global-set-key (kbd "C-l") 'replace-regexp)
 
 ;; C-t as tab change
 (define-key global-map (kbd "C-t") 'other-window)

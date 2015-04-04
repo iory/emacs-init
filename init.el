@@ -43,6 +43,7 @@
     howdoi
     hiwin
     haskell-mode
+    ipython
     jedi
     lispxmp
     magit
@@ -55,6 +56,7 @@
     powerline
     powerline-evil
     projectile
+    python-mode
     quickrun
     redo+
     save-load-path
@@ -119,4 +121,5 @@
   (require 'ros-setting)
   (require 'mozc-setting))
 
+(fullscreen-mode t)
 (global-set-key (kbd "C-x m") 'magit-status) ;; don't use email on emacs

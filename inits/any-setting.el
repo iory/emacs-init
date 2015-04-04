@@ -30,6 +30,9 @@
  '(anzu-deactivate-region t)
  '(anzu-search-threshold 1000))
 
+(global-set-key (kbd "C-l") 'anzu-query-replace-regexp)
+(global-set-key (kbd "C-M-%") 'anzu-query-replace)
+
 ;; mwim
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
 (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
