@@ -1,0 +1,2 @@
+;;
+C-x C-f /ssh:user@hostname#port:~/

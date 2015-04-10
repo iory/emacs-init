@@ -53,6 +53,16 @@
 (setq helm-ag-base-command "ag --nocolor --nogroup -n")
 (global-set-key (kbd "C-,") 'helm-ag)
 
+(defun helm-ag-dot-emacs ()
+  (interactive)
+  (helm-ag "~/.emacs.d/"))
+
+(require 'projectile nil t)
+
+(defun helm-projectile-ag ()
+  (interactive)
+  (helm-ag (projectile-project-root)))
+
 ;; Emulate `kill-line' in helm minibuffer
 (setq helm-delete-minibuffer-contents-from-point t)
 (defadvice helm-delete-minibuffer-contents (before helm-emulate-kill-line activate)

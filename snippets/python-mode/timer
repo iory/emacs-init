@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: timer
+# key: timer
+# binding: direct-keybinding
+# --
+from timeit import default_timer as timer
+start_time = timer()
+# process
+
+end_time   = timer()
+print(end_time - start_time)
