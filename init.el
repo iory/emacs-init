@@ -16,6 +16,7 @@
     auto-async-byte-compile
     auto-complete
     auto-complete-c-headers
+    arduino-mode
     ace-isearch
     anzu
     cmake-project
@@ -50,6 +51,7 @@
     markdown-mode
     migemo
     mwim
+    mykie
     neotree
     open-junk-file
     popwin

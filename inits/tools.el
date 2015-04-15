@@ -5,6 +5,20 @@
 ;; Author: iori
 ;; Keywords: elisp
 
+(defun duplicate-this-line-forward ()
+  (interactive)
+  (save-excursion
+    (insert (buffer-substring (point-at-bol)
+                              (progn
+                                (if (eobp) (newline) (forward-line 1))
+                                (point)))))
+  (call-interactively 'next-line))
+
+(require 'mykie)
+(mykie:global-set-key "M-w"
+  :region kill-ring-save
+  :default duplicate-this-line-forward)
+
 (defun copy-current-line ()
   (interactive)
   (let (start
