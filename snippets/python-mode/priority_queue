@@ -1,0 +1,25 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: priority_queue
+# key: priority
+# binding: direct-keybinding
+# --
+import heapq
+class priority_queue(object):
+    def __init__(self, init_list=None):
+        if init_list:
+            self.quque = init_list
+            heapq.heapify(self.queue)
+        else:
+            self.queue = []
+        self.index = 0
+        self.size = len(self.queue)
+    def push(self, item, priority):
+        heapq.heappush(self.queue, (-priority, self.index, item))
+        self.index += 1
+    def pop(self):
+        self.index -= 1
+        return heapq.heappop(self.queue)
+    def __str__(self):
+        return "#<{0.__class__.__name__} size={0.index} elements={0.queue}>".format(self)
+    def __repr__(self):
+        return self.__str__()
