@@ -54,29 +54,6 @@
 (global-set-key (kbd "M-p") 'copy-current-line)
 (global-set-key (kbd "M-l") 'select-current-line)
 
-;; ediff
-;; コントロール用のバッファを同一フレーム内に表示
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-;; diffのバッファを上下ではなく左右に並べる
-(setq ediff-split-window-function 'split-window-horizontally)
-
-(add-hook 'ediff-before-setup-hook 'hiwin-deactivate)
-(add-hook 'ediff-quit-hook 'hiwin-activate)
-
-;; extend ediff
-(defun ediff-two-window ()
-  (interactive)
-  (let ((buffer1 (buffer-file-name (car (buffer-list))))
-        (buffer2 (buffer-file-name (cadr (buffer-list)))))
-    (setq msg1 (format "#<%s>" buffer1))
-    (setq msg-mid (format " "))
-    (setq msg2 (format "#<%s>" buffer2))
-    (setq msg (concat msg1 msg-mid msg2))
-    (message "%s" msg)
-    (ediff buffer1 buffer2)))
-
-(global-set-key (kbd "C-c C-e") 'ediff-two-window)
-
 ;;; Get current path and put it to clipboard
 (defun get-current-path-to-clipboard ()
   (interactive)

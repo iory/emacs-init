@@ -104,6 +104,7 @@
 (require 'common)
 (require 'c-setting)
 (require 'direx-setting)
+(require 'ediff-setting)
 (require 'git-setting)
 (require 'helm-setting)
 (require 'insert-setting)
