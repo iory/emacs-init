@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: warshall
+# key: warshall
+# binding: direct-keybinding
+# --
+def warshal_floyd(g):
+    n = len(g)
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                g[i][j] = min(g[i][j], g[i][k] + g[k][j])

@@ -1,0 +1,14 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: timeit
+# key: timeit
+# binding: direct-keybinding
+# --
+import time
+def timeit(method):
+    def timed(*args, **kw):
+        ts = time.time()
+        result = method(*args, **kw)
+        te = time.time()
+        print("{} ({}, {}) {} sec".format(method.__name__, args, kw, te-ts))
+        return result
+    return timed
