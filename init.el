@@ -114,6 +114,7 @@
 (require 'quickrun-setting)
 ;; (require 'ruby-setting)
 (require 'server-setting)
+(require 'tex-setting)
 (require 'trr-setting)
 ;; (require 'tab-setting)
 (require 'utility)
