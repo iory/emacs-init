@@ -71,6 +71,10 @@
     use-package
     volatile-highlights
     yaml-mode
+
+    dash
+    s
+    f
     ))
 
 ;; automatically install
