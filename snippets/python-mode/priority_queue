@@ -19,7 +19,14 @@ class priority_queue(object):
     def pop(self):
         self.index -= 1
         return heapq.heappop(self.queue)
+    def top(self):
+        return self.queue[0]
     def __str__(self):
         return "#<{0.__class__.__name__} size={0.index} elements={0.queue}>".format(self)
     def __repr__(self):
         return self.__str__()
+    def empty(self):
+        if self.index:
+            return False
+        else:
+            return True
