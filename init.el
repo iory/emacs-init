@@ -5,7 +5,7 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-(global-set-key (kbd "C-x C-c") 'open-junk-file)
+;; (global-set-key (kbd "C-x C-c") 'open-junk-file)
 ;; I never use C-x C-c
 (defalias 'exit 'save-buffers-kill-emacs)
 (package-initialize)
