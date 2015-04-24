@@ -31,4 +31,9 @@
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
 (setq magit-last-seen-setup-instructions "1.4.0")
+
+;; github-browse-file
+(require 'github-browse-file)
+(setq github-browse-file-show-line-at-point t)
+
 (provide 'git-setting)

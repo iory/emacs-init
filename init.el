@@ -35,6 +35,7 @@
     gitconfig-mode
     gitignore-mode
     git-gutter
+    github-browse-file
     helm
     helm-swoop
     helm-migemo
