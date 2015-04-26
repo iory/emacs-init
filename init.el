@@ -112,6 +112,7 @@
 (require 'ediff-setting)
 (require 'git-setting)
 (require 'helm-setting)
+(require 'indent-setting)
 (require 'insert-setting)
 (require 'markdown-setting)
 (require 'python-setting)
