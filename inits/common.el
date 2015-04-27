@@ -25,8 +25,8 @@
 (set-foreground-color "#55ff55")
 (global-linum-mode t)
 (set-face-attribute 'linum nil
-		    :foreground "#55ff55"
-		    :height 0.7)
+                    :foreground "#55ff55"
+                    :height 0.7)
 
 ;; selected area's color
 (set-face-background 'region "#555")
@@ -169,31 +169,31 @@
 ;; veiw-mode
 (setq view-read-only t)
 (defvar pager-keybind
-      `( ;; vi-like
-        ("h" . backward-word)
-        ("l" . forward-word)
-        ("j" . next-line)
-        ("k" . previous-line)
-        (";" . gene-word)
-        ("b" . scroll-down)
-        (" " . scroll-up)
-        ;; w3m-like
-        ("m" . gene-word)
-        ("i" . win-delete-current-window-and-squeeze)
-        ("w" . forward-word)
-        ("e" . backward-word)
-        ("(" . point-undo)
-        (")" . point-redo)
-        ("J" . ,(lambda () (interactive) (scroll-up 1)))
-        ("K" . ,(lambda () (interactive) (scroll-down 1)))
-        ;; bm-easy
-        ("." . bm-toggle)
-        ("[" . bm-previous)
-        ("]" . bm-next)
-        ;; langhelp-like
-        ("c" . scroll-other-window-down)
-        ("v" . scroll-other-window)
-        ))
+  `( ;; vi-like
+    ("h" . backward-word)
+    ("l" . forward-word)
+    ("j" . next-line)
+    ("k" . previous-line)
+    (";" . gene-word)
+    ("b" . scroll-down)
+    (" " . scroll-up)
+    ;; w3m-like
+    ("m" . gene-word)
+    ("i" . win-delete-current-window-and-squeeze)
+    ("w" . forward-word)
+    ("e" . backward-word)
+    ("(" . point-undo)
+    (")" . point-redo)
+    ("J" . ,(lambda () (interactive) (scroll-up 1)))
+    ("K" . ,(lambda () (interactive) (scroll-down 1)))
+    ;; bm-easy
+    ("." . bm-toggle)
+    ("[" . bm-previous)
+    ("]" . bm-next)
+    ;; langhelp-like
+    ("c" . scroll-other-window-down)
+    ("v" . scroll-other-window)
+    ))
 
 (defun define-many-keys (keymap key-table &optional includes)
   (let (key cmd)
@@ -201,7 +201,7 @@
       (setq key (car key-cmd)
             cmd (cdr key-cmd))
       (if (or (not includes) (member key includes))
-        (define-key keymap key cmd))))
+          (define-key keymap key cmd))))
   keymap)
 
 (defun view-mode-hook0 ()
@@ -248,32 +248,32 @@
 (global-set-key "\C-w" 'kill-region-or-backward-kill-word)
 
 (define-prefix-command 'windmove-map)
-    (global-set-key (kbd "C-q") 'windmove-map)
-    (define-key windmove-map "b" 'windmove-left)
-    (define-key windmove-map "n" 'windmove-down)
-    (define-key windmove-map "p" 'windmove-up)
-    (define-key windmove-map "f" 'windmove-right)
+(global-set-key (kbd "C-q") 'windmove-map)
+(define-key windmove-map "b" 'windmove-left)
+(define-key windmove-map "n" 'windmove-down)
+(define-key windmove-map "p" 'windmove-up)
+(define-key windmove-map "f" 'windmove-right)
 
- (defun split-window-conditional ()
-      (interactive)
-      (if (> (* (window-height) 2) (window-width))
-          (split-window-vertically)
-        (split-window-horizontally)))
+(defun split-window-conditional ()
+  (interactive)
+  (if (> (* (window-height) 2) (window-width))
+      (split-window-vertically)
+    (split-window-horizontally)))
 (define-key windmove-map "s" 'split-window-conditional)
 
 (setq
-   ;; クリップボードでコピー＆ペーストできるようにする
-   x-select-enable-clipboard t
-   ;; PRIMARY selectionを使う(Windowsでは対象外)
-   x-select-enable-primary t
-   ;; クリップボードでコピー・カットした文字列を
-   ;; キルリングにも保存させる
-   save-interprogram-paste-before-kill t
-   ;; エラー時などはベル音ではなくて画面を1回点滅させる
-   visible-bell t
-   ;; バックアップファイルはカレントディレクトリではなく
-   ;; ~/.emacs.d/backups 以下に保存する
-   backup-directory-alist `(("." . ,(concat user-emacs-directory
-                                            "backups"))))
+ ;; クリップボードでコピー＆ペーストできるようにする
+ x-select-enable-clipboard t
+ ;; PRIMARY selectionを使う(Windowsでは対象外)
+ x-select-enable-primary t
+ ;; クリップボードでコピー・カットした文字列を
+ ;; キルリングにも保存させる
+ save-interprogram-paste-before-kill t
+ ;; エラー時などはベル音ではなくて画面を1回点滅させる
+ visible-bell t
+ ;; バックアップファイルはカレントディレクトリではなく
+ ;; ~/.emacs.d/backups 以下に保存する
+ backup-directory-alist `(("." . ,(concat user-emacs-directory
+                                          "backups"))))
 
 (provide 'common)
