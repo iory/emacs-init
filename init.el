@@ -1,5 +1,17 @@
 ;; .emacs.d/init.el
 
+(set-default-coding-systems 'utf-8-dos)
+(setq default-file-name-coding-system 'shift_jis)
+
+(defconst FONT_FAMILY "Ricty Diminished Discord")
+(defconst FONT_SIZE 12)
+(set-frame-font (concat FONT_FAMILY "-" (format "%s" FONT_SIZE)))
+
+(add-hook
+ 'shell-mode-hook
+ '(lambda ()
+    (set-buffer-process-coding-system 'sjis 'sjis)))
+
 (require 'cl)
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -19,14 +31,14 @@
     arduino-mode
     ace-isearch
     anzu
-    cmake-project
+    ;; cmake-project
     cmake-mode
     direx
     dropdown-list
     exec-path-from-shell
     evil
     flymake
-    flymake-checkers
+    ;; flymake-checkers
     flylisp
     flymake-cppcheck
     flycheck
@@ -45,7 +57,7 @@
     howdoi
     hiwin
     haskell-mode
-    ipython
+    ;; ipython
     jedi
     lispxmp
     magit
@@ -88,7 +100,7 @@
         (package-install pkg))))
 
 ;; path setting
-(exec-path-from-shell-initialize)
+;; (exec-path-from-shell-initialize)
 
 ;; avoid strange character on shell
 (add-hook 'shell-mode-hook

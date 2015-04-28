@@ -6,7 +6,7 @@
 (require 'python)
 
 (setq python-shell-interpreter "/usr/local/bin/ipython")
-(require 'ipython)
+;; (require 'ipython)
 
 (require 'jedi)
 (add-hook 'python-mode-hook 'jedi:setup)

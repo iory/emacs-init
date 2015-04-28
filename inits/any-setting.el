@@ -52,30 +52,30 @@
 (setq eldoc-idle-delay 0.2)
 (setq eldoc-minor-mode-string "")
 
-(require 'migemo)
-(setq migemo-command "cmigemo")
-(setq migemo-options '("-q" "--emacs"))
+;; (require 'migemo)
+;; (setq migemo-command "cmigemo")
+;; (setq migemo-options '("-q" "--emacs"))
 
 ;; Set your installed path
-(setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
-(setq migemo-user-dictionary nil)
-(setq migemo-regex-dictionary nil)
-(setq migemo-coding-system 'utf-8-unix)
-(migemo-init)
+;; (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+;; (setq migemo-user-dictionary nil)
+;; (setq migemo-regex-dictionary nil)
+;; (setq migemo-coding-system 'utf-8-unix)
+;; (migemo-init)
 
-(require 'helm-migemo)
-(eval-after-load "helm-migemo"
-  '(defun helm-compile-source--candidates-in-buffer (source)
-     (helm-aif (assoc 'candidates-in-buffer source)
-         (append source
-                 `((candidates
-                    . ,(or (cdr it)
-                           (lambda ()
-                             ;; Do not use `source' because other plugins
-                             ;; (such as helm-migemo) may change it
-                             (helm-candidates-in-buffer (helm-get-current-source)))))
-                   (volatile) (match identity)))
-       source)))
+;; (require 'helm-migemo)
+;; (eval-after-load "helm-migemo"
+;;   '(defun helm-compile-source--candidates-in-buffer (source)
+;;      (helm-aif (assoc 'candidates-in-buffer source)
+;;          (append source
+;;                  `((candidates
+;;                     . ,(or (cdr it)
+;;                            (lambda ()
+;;                              ;; Do not use `source' because other plugins
+;;                              ;; (such as helm-migemo) may change it
+;;                              (helm-candidates-in-buffer (helm-get-current-source)))))
+;;                    (volatile) (match identity)))
+;;        source)))
 
 (require 'helm-swoop)
 (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)

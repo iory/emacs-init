@@ -4,7 +4,7 @@
 		("Makefile_.*$" . makefile-gmake-mode)
 		) auto-mode-alist))
 ;; cmake
-(require 'cmake-project)
+;; (require 'cmake-project)
 
 ;; cmake-mode
 (require 'cmake-mode)
