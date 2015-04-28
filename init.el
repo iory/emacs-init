@@ -1,17 +1,4 @@
 ;; .emacs.d/init.el
-
-(set-default-coding-systems 'utf-8-dos)
-(setq default-file-name-coding-system 'shift_jis)
-
-(defconst FONT_FAMILY "Ricty Diminished Discord")
-(defconst FONT_SIZE 12)
-(set-frame-font (concat FONT_FAMILY "-" (format "%s" FONT_SIZE)))
-
-(add-hook
- 'shell-mode-hook
- '(lambda ()
-    (set-buffer-process-coding-system 'sjis 'sjis)))
-
 (require 'cl)
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -119,23 +106,24 @@
 ;; (require 'byte-compile-setting)
 (require 'auto-complete-setting)
 (require 'common)
-(require 'c-setting)
+;; (require 'c-setting)
 (require 'direx-setting)
 (require 'ediff-setting)
 (require 'git-setting)
 (require 'helm-setting)
 (require 'insert-setting)
 (require 'markdown-setting)
-(require 'python-setting)
+;; (require 'python-setting)
 (require 'powerline-setting)
 (require 'quickrun-setting)
 ;; (require 'ruby-setting)
 (require 'server-setting)
-(require 'tex-setting)
+;; (require 'tex-setting)
 (require 'trr-setting)
 ;; (require 'tab-setting)
 (require 'utility)
 (require 'yasnippet-setting)
+(require 'windows-setting)
 
 ;; using ROS on Ubuntu
 (when (eq system-type 'gnu/linux)

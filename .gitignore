@@ -8,6 +8,8 @@
 /site-lisp
 /undohist
 /bin
+/url
+/server
 
 !/bin/emacs-shell
 
