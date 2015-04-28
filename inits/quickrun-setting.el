@@ -15,17 +15,17 @@
 
 (quickrun-set-default "c++" "c++/clang++")
 
-;; (quickrun-add-command "python3"
-;;                       '((:command . "python3")
-;;                         (:exec . ("%c %s")))
-;;                       :default "python3")
+(quickrun-add-command "python3"
+                      '((:command . "py")
+                        (:exec . ("%c %s")))
+                      :default "python3")
 
 (quickrun-add-command "commonlisp"
                       '((:command . "clisp")
                         (:exec . ("%c %s")))
                       :default "commonlisp")
 
-;;(quickrun-set-default "python" "python3")
+(quickrun-set-default "python" "python3")
 (quickrun-set-default "lisp" "commonlisp")
 
 (provide 'quickrun-setting)
