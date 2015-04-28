@@ -120,6 +120,7 @@
 (require 'quickrun-setting)
 ;; (require 'ruby-setting)
 (require 'server-setting)
+(require 'sh-setting)
 (require 'tex-setting)
 (require 'trr-setting)
 ;; (require 'tab-setting)
