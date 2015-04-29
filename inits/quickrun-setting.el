@@ -25,6 +25,11 @@
                         (:exec . ("%c %s")))
                       :default "commonlisp")
 
+;; (quickrun-add-command "roseus"
+;;                       '((:command . "roseus")
+;;                         (:exec . ("%c %s")))
+;;                       :default "roseus")
+
 ;;(quickrun-set-default "python" "python3")
 (quickrun-set-default "lisp" "commonlisp")
 

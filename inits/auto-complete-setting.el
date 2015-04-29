@@ -52,6 +52,7 @@
 (define-key ac-complete-mode-map "\M-v" 'ac-previous-page)
 
 (setq ac-quick-help-delay 0.1)
+(setq ac-auto-show-menu 0.2)
 (global-auto-complete-mode t)
 
 

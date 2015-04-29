@@ -119,6 +119,7 @@
 (require 'powerline-setting)
 (require 'quickrun-setting)
 ;; (require 'ruby-setting)
+(require 'roseus-setting)
 (require 'server-setting)
 (require 'sh-setting)
 (require 'tex-setting)
