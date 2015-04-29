@@ -61,6 +61,7 @@
     projectile
     python-mode
     quickrun
+    rainbow-delimiters
     redo+
     save-load-path
     sequential-command
