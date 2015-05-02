@@ -18,9 +18,13 @@
     auto-complete-c-headers
     arduino-mode
     ace-isearch
+    ac-cider ;; for clojure
     anzu
     cmake-project
     cmake-mode
+    clojure-mode ;; for clojure
+    cider ;; for clojure
+    clojure-cheatsheet ;; for clojure
     direx
     dropdown-list
     exec-path-from-shell
@@ -67,6 +71,7 @@
     sequential-command
     smartparens
     smart-newline
+    slamhound ;; for clojure
     tabbar
     undo-tree
     undohist
@@ -109,6 +114,7 @@
 (require 'auto-complete-setting)
 (require 'common)
 (require 'c-setting)
+(require 'clojure-setting)
 (require 'direx-setting)
 (require 'ediff-setting)
 (require 'git-setting)
