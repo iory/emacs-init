@@ -1,0 +1,14 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: reduce
+# key: reduce
+# binding: direct-keybinding
+# --
+template <class InputIterator, class Func>
+typename std::iterator_traits<InputIterator>::value_type reduce(Func f,
+                                                                InputIterator first, InputIterator last,
+                                                                typename std::iterator_traits<InputIterator>::value_type init_value) {
+    return std::accumulate(first, last, init_value, f);}
+template <class InputIterator, class Func>
+typename std::iterator_traits<InputIterator>::value_type reduce(Func f,
+                                                                InputIterator first, InputIterator last) {
+    return std::accumulate(first, last, 0, f);}

@@ -1,0 +1,77 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: segment_tree
+# key: segment_tree
+# binding: direct-keybinding
+# --
+template <class V, class Compare = std::less<int> >
+class SegTree {
+public:
+    std::vector<V> data;
+    V def;
+    int N;
+    int NV;
+    int NC;
+    int wide;
+    V comp(V l, V r, Compare c=Compare()) {
+        if(c(l, r)){
+            return l;
+        }
+        else {
+            return r;
+        }
+    }
+
+    SegTree(int N, V init_value) : def(init_value) , N(N), wide(5) {
+        NV=1;
+        NC=0;
+        while(NV < N) {NV <<= 1; NC++;}
+        data = std::vector<V>(NV*2, init_value);
+    }
+
+
+    V get_value_(int a, int b, int l, int r, int k){
+        if(r<=a || b<=l) return def;
+        if(a<=l && r<=b) return data[k];
+        else {
+            int mid = (l+r) / 2;
+            V vl = get_value_(a, b, l, mid, k*2+1);
+            V vr = get_value_(a, b, mid, r, k*2+2);
+            return comp(vl, vr);
+        }
+    }
+
+    V get_value(int a, int b){
+        return get_value_(a, b, 0, NV, 0);
+    }
+
+    void update(V value, int k){
+        k += NV-1;
+        data[k] = value;
+        while(k>0){
+            k = (k-1)/2;
+            data[k] = comp(data[k*2+1], data[k*2+2]);
+        }
+    }
+
+    friend std::ostream& operator<< (std::ostream& os, const SegTree& seg) {
+        int NC= seg.NC;
+        os << "|";
+        int c = (seg.wide + 1) * ((1 << NC)-1);
+        for(int i=0;i<c/2;++i) std::cout << " ";
+        os << std::setw(seg.wide) << seg.data[0];
+        for(int i=0;i<c/2+c%2;++i) std::cout << " ";
+        os  << "|" << std::endl;
+
+        for(int level=1;level<=NC;++level){
+            for(int k=(1<<level)-1;k<(1<<(level+1))-1;++k){
+                os << "|";
+                int c = (seg.wide + 1) * ((1 << (NC-level))-1);
+                for(int i=0;i<c/2;++i) std::cout << " ";
+                os << std::setw(seg.wide) << seg.data[k];
+                for(int i=0;i<c/2+c%2;++i) std::cout << " ";
+            }
+            os << "|" << std::endl;
+        }
+        return os;
+    }
+};

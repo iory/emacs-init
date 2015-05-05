@@ -3,10 +3,13 @@
 # key: class
 # binding: direct-keybinding
 # --
-class ${0:class_name}
-{
+class ${1:class_name} {
 public:
-    $0();
-    ~$0();
+    $1(){};
+    ~$1(){};
+    friend std::ostream& operator<< (std::ostream& os, const $1& cls) {
+        return os;
+    }
 private:
 };
+$0
