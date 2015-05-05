@@ -40,13 +40,14 @@
 
 (defun ac-roseus-mode-setup ()
   (setq ac-sources
-        '(
-          ac-source-abbrev
-          ac-source-words-in-same-mode-buffers
-          ac-source-yasnippet
-          ac-source-filename
-          ac-source-underscore-roseus-dict
-          )))
+        (append ac-sources
+                '(
+                  ac-source-abbrev
+                  ac-source-words-in-same-mode-buffers
+                  ac-source-yasnippet
+                  ac-source-filename
+                  ac-source-underscore-roseus-dict
+                  ))))
 
  (add-hook 'lisp-mode-hook 'ac-roseus-mode-setup)
 (setq ac-disable-faces '(font-lock-comment-face font-lock-doc-face))
