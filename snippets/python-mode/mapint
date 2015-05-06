@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mapint
+# key: mapint
+# binding: direct-keybinding
+# --
+map(int, raw_input().split())

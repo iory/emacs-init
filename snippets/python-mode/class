@@ -3,7 +3,7 @@
 # key: class
 # binding: direct-keybinding
 # --
-class ${0:MyClass}(object):
+class ${1:MyClass}(object):
     def __init__(self):
         print(self)
     def __str__(self):

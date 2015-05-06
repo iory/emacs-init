@@ -8,11 +8,16 @@
 (setq python-shell-interpreter "/usr/local/bin/ipython")
 (require 'ipython)
 
+(setenv "PYTHONPATH" (exec-path-from-shell-copy-env "PYTHONPATH"))
 (require 'jedi)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 (add-hook 'python-mode-hook 'jedi:ac-setup)
 (define-key jedi-mode-map (kbd "<C-tab>") nil)
+
+(eval-after-load "python"
+  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
+(add-hook 'jedi-mode-hook 'jedi-direx:setup)
 
 (require 'flymake)
 

@@ -51,6 +51,7 @@
     haskell-mode
     ipython
     jedi
+    jedi-direx
     lispxmp
     magit
     markdown-mode

@@ -1,0 +1,15 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: service_call_test
+# key: service_call_test
+# binding: direct-keybinding
+# --
+from ${1:package_name}.srv import ${2:ServiceFileName}
+
+def ${3:ServiceName}_client(x, y):
+    rospy.wait_for_service('$3')
+    try:
+        $3 = rospy.ServiceProxy('$3', $2)
+        response = $3(x, y)
+        return response
+    except rospy.ServiceException, e:
+        print "Service call failed: %s"%e
