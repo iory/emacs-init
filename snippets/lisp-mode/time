@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: time
+# key: time
+# binding: direct-keybinding
+# --
+(let ((start-time (ros::time-now))
+      (setq elapsed-time (ros::time- (ros::time-now) start-time))

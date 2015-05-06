@@ -1721,7 +1721,6 @@ ros::ros-info
 ros::publish
 ros::advertise
 ros::subscribe
-ros::publish
 ros::simple-action-client
 ros::wait-for-service
 ros::service-call
@@ -1731,3 +1730,18 @@ ros::get-param
 ros::has-param
 ros::roseus-add-msgs
 ros::load-ros-package
+ros::set-param
+ros::sleep
+ros::rate
+ros::get-topic-publisher
+ros::coords->tf-pose
+ros::transform-broadcaster
+ros::time-
+ros::time+
+ros::get-namespace
+ros::ok
+ros::*debug*
+ros::*compile-message*
+ros::roseus-add-msgs
+ros::transform-listener
+ros::has-param
