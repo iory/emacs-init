@@ -26,6 +26,8 @@
     cider ;; for clojure
     clojure-cheatsheet ;; for clojure
     direx
+    dired-k
+    dired-toggle
     dropdown-list
     exec-path-from-shell
     evil
@@ -58,7 +60,6 @@
     migemo
     mwim
     mykie
-    neotree
     open-junk-file
     popwin
     powerline
