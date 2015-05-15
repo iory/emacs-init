@@ -22,8 +22,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
+(add-to-list 'load-path "/opt/ros/hydro/share/emacs/site-lisp")
 ;; or whatever your install space is + "/share/emacs/site-lisp"
-(require 'rosemacs-config)
+;; (require 'rosemacs-config)
 
 ;; inhibit startup screen
 (setq inhibit-startup-screen t)
@@ -79,7 +80,7 @@
 (set-face-attribute 'whitespace-empty nil
                     :background my/bg-color)
 
-
+(global-set-key "\C-h" 'delete-backward-char)
 (setq
    ;; クリップボードでコピー＆ペーストできるようにする
    x-select-enable-clipboard t
