@@ -19,6 +19,7 @@
     arduino-mode
     ace-isearch
     ac-cider ;; for clojure
+    ac-haskell-process
     anzu
     cmake-project
     cmake-mode
@@ -120,6 +121,7 @@
 (require 'direx-setting)
 (require 'ediff-setting)
 (require 'git-setting)
+(require 'haskell-setting)
 (require 'helm-setting)
 (require 'indent-setting)
 (require 'insert-setting)
