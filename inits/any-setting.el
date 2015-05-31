@@ -114,4 +114,8 @@
 ;;; ace-isearch
 (global-ace-isearch-mode 1)
 
+;; ignore warnings of "local varibales list"
+(custom-set-variables
+ '(safe-local-variable-values (quote ((clmemo-mode . t)))))
+
 (provide 'any-setting)

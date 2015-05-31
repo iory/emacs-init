@@ -146,3 +146,19 @@
 
 (fullscreen-mode t)
 (global-set-key (kbd "C-x m") 'magit-status) ;; don't use email on emacs
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(anzu-deactivate-region t)
+ '(anzu-mode-lighter "")
+ '(anzu-search-threshold 1000)
+ '(helm-ff-auto-update-initial-value nil)
+ '(safe-local-variable-values (quote ((eval sh-set-shell "zsh") (require-final-newline) (clmemo-mode . t)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
