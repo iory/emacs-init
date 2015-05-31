@@ -62,6 +62,7 @@
 (setq whitespace-action '(auto-cleanup))
 
 (global-whitespace-mode 1)
+(global-set-key (kbd "C-h") 'delete-backward-char)
 
 (defvar my/bg-color "#232323")
 (set-face-attribute 'whitespace-trailing nil
