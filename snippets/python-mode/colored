@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: colored
+# key: colored
+# binding: direct-keybinding
+# --
+try:
+    import colored_traceback.auto
+except ImportError:
+    pass
