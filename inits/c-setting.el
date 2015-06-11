@@ -29,4 +29,10 @@
                                c++-mode)
 (add-to-list 'flycheck-checkers 'c++-g++-ja)
 
+;; C++ style
+(add-hook 'c++-mode-hook
+          '(lambda()
+             (c-set-offset 'innamespace 0)   ; namespace {}の中はインデントしない
+             ))
+
 (provide 'c-setting)
