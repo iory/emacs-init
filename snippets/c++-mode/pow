@@ -3,12 +3,12 @@
 # key: pow
 # binding: direct-keybinding
 # --
-template<class T>
-T pow(T x,int n){
+template <class T>
+T pow(T x, T n, T mod){
     T ret = 1;
     while(n){
-        if(n&1)ret *= x;
-        x *= x;
+        if(n & 1) ret = (x * ret) % mod;
+        x = (x * x) % mod;
         n >>= 1;
     }
     return ret;

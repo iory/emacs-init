@@ -19,6 +19,7 @@
     arduino-mode
     ace-isearch
     ac-cider ;; for clojure
+    ac-etags
     ac-haskell-process
     anzu
     cmake-project

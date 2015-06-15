@@ -35,4 +35,13 @@
              (c-set-offset 'innamespace 0)   ; namespace {}の中はインデントしない
              ))
 
+(custom-set-variables
+  '(ac-etags-requires 1))
+
+(eval-after-load "etags"
+  '(progn
+      (ac-etags-setup)))
+
+(add-hook 'c-mode-common-hook 'ac-etags-ac-setup)
+
 (provide 'c-setting)
