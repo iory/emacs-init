@@ -1,23 +1,4 @@
-#include <algorithm>
-#include <bitset>
-#include <deque>
-#include <fstream>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <iterator>
-#include <list>
-#include <map>
-#include <queue>
-#include <set>
-#include <stack>
-#include <string>
-#include <typeinfo>
-#include <utility>
-#include <vector>
-#include <complex>
-#include <cmath>
-#include <cstring>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define rep(i,n) for(int i=0;i<n;i++)
