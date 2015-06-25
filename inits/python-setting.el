@@ -5,8 +5,8 @@
 (require 'auto-complete-config)
 (require 'python)
 
-(setq python-shell-interpreter "/usr/local/bin/ipython")
-(require 'ipython)
+;; (setq python-shell-interpreter "/usr/local/bin/ipython")
+;; (require 'ipython)
 
 (setenv "PYTHONPATH" (exec-path-from-shell-copy-env "PYTHONPATH"))
 (require 'jedi)
