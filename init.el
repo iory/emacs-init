@@ -44,6 +44,8 @@
     gitignore-mode
     git-gutter
     github-browse-file
+    go-mode
+    go-autocomplete
     helm
     helm-swoop
     helm-migemo
@@ -123,6 +125,7 @@
 (require 'direx-setting)
 (require 'ediff-setting)
 (require 'git-setting)
+(require 'go-setting)
 (require 'haskell-setting)
 (require 'helm-setting)
 (require 'indent-setting)
@@ -170,3 +173,4 @@
 ;; (setq shell-pop-shell-type '("terminal" "*terminal*" (lambda () (term shell-pop-term-shell))))
 ;; (setq shell-pop-shell-type '("ansi-term" "*ansi-term*" (lambda () (ansi-term shell-pop-term-shell))))
 (global-set-key (kbd "C-c s") 'shell-pop)
+(prefer-coding-system 'utf-8)
