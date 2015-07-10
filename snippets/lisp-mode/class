@@ -1,0 +1,24 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: class
+# key: class
+# binding: direct-keybinding
+# --
+(defclass ${1:class_name}
+  :super propertied-object
+  :slots ()
+  )
+
+(defmethod $1
+  (:init
+   ()
+   )
+  (:spin-once
+   ()
+   (ros::spin-once)
+   )
+  (:spin
+   ()
+   (do-until-key
+    (send self :spin-once)))
+  )
+$0
