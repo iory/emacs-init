@@ -52,6 +52,7 @@
     helm-ag
     helm-cmd-t
     helm-projectile
+    helm-gtags
     howdoi
     hiwin
     haskell-mode
