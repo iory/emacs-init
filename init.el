@@ -23,7 +23,7 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
 ;; or whatever your install space is + "/share/emacs/site-lisp"
-(require 'rosemacs-config)
+;; (require 'rosemacs-config)
 
 ;; inhibit startup screen
 (setq inhibit-startup-screen t)
@@ -95,3 +95,22 @@
    ;; ~/.emacs.d/backups 以下に保存する
    backup-directory-alist `(("." . ,(concat user-emacs-directory
                                             "backups"))))
+
+
+(custom-set-faces
+ '(default ((t
+             (:background "black" :foreground "#55FF55")
+             )))
+ '(cursor ((((class color)
+             (background dark))
+            (:background "#00AA00"))
+           (((class color)
+             (background light))
+            (:background "#999999"))
+           (t ())
+           )))
+
+; server start for emacs-client
+(require 'server)
+(unless (server-running-p)
+  (server-start))
