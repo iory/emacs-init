@@ -63,6 +63,7 @@
     magit
     markdown-mode
     migemo
+    mozc
     mwim
     mykie
     open-junk-file
