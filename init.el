@@ -56,6 +56,10 @@
     howdoi
     hiwin
     haskell-mode
+    ido-occasional
+    ido-vertical-mode
+    imenu
+    imenus
     ipython
     jedi
     jedi-direx
