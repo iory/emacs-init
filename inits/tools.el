@@ -51,7 +51,7 @@
   (set-mark (line-beginning-position)))
 
 
-(global-set-key (kbd "M-p") 'copy-current-line)
+;; (global-set-key (kbd "M-p") 'copy-current-line)
 (global-set-key (kbd "M-l") 'select-current-line)
 
 ;;; Get current path and put it to clipboard

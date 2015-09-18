@@ -66,6 +66,7 @@
     mwim
     mykie
     open-junk-file
+    pcre2el
     popwin
     powerline
     powerline-evil
@@ -85,6 +86,7 @@
     undohist
     use-package
     volatile-highlights
+    visual-regexp-steroids
     yaml-mode
 
     dash
