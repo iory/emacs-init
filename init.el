@@ -56,6 +56,10 @@
     howdoi
     hiwin
     haskell-mode
+    ido-occasional
+    ido-vertical-mode
+    imenu
+    imenus
     ipython
     jedi
     jedi-direx
@@ -63,6 +67,7 @@
     magit
     markdown-mode
     migemo
+    mozc
     mwim
     mykie
     open-junk-file
