@@ -9,6 +9,8 @@
   '(
     ;; package list to use
     whitespace
+    smartparens
+    rainbow-delimiters
     ))
 
 ;; automatically install
