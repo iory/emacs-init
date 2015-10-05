@@ -63,6 +63,7 @@
 (setq whitespace-action '(auto-cleanup))
 
 (global-whitespace-mode 1)
+(global-set-key (kbd "C-h") 'delete-backward-char)
 
 (defvar my/bg-color "#232323")
 (set-face-attribute 'whitespace-trailing nil
@@ -151,3 +152,22 @@
    ;; ~/.emacs.d/backups 以下に保存する
    backup-directory-alist `(("." . ,(concat user-emacs-directory
                                             "backups"))))
+
+
+(custom-set-faces
+ '(default ((t
+             (:background "black" :foreground "#55FF55")
+             )))
+ '(cursor ((((class color)
+             (background dark))
+            (:background "#00AA00"))
+           (((class color)
+             (background light))
+            (:background "#999999"))
+           (t ())
+           )))
+
+; server start for emacs-client
+(require 'server)
+(unless (server-running-p)
+  (server-start))
