@@ -173,3 +173,7 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+(when (require 'saveplace nil t)
+  (setq-default save-place t)
+  (setq save-place-file "~/.emacs.d/saved-places"))
