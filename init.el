@@ -67,22 +67,6 @@
 (global-whitespace-mode 1)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
-(defvar my/bg-color "#232323")
-(set-face-attribute 'whitespace-trailing nil
-                    :background my/bg-color
-                    :foreground "DeepPink"
-                    :underline t)
-(set-face-attribute 'whitespace-tab nil
-                    :background my/bg-color
-                    :foreground "LightSkyBlue"
-                    :underline t)
-(set-face-attribute 'whitespace-space nil
-                    :background my/bg-color
-                    :foreground "GreenYellow"
-                    :weight 'bold)
-(set-face-attribute 'whitespace-empty nil
-                    :background my/bg-color)
-
 (global-set-key "\C-h" 'delete-backward-char)
 
 ;; スタートアップ非表示
@@ -155,19 +139,6 @@
    backup-directory-alist `(("." . ,(concat user-emacs-directory
                                             "backups"))))
 
-
-(custom-set-faces
- '(default ((t
-             (:background "black" :foreground "#55FF55")
-             )))
- '(cursor ((((class color)
-             (background dark))
-            (:background "#00AA00"))
-           (((class color)
-             (background light))
-            (:background "#999999"))
-           (t ())
-           )))
 
 ; server start for emacs-client
 (require 'server)
