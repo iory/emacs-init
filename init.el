@@ -81,6 +81,62 @@
                     :background my/bg-color)
 
 (global-set-key "\C-h" 'delete-backward-char)
+
+;; スタートアップ非表示
+(setq inhibit-startup-screen t)
+
+;; scratchの初期メッセージ消去
+(setq initial-scratch-message "")
+
+;; yes or no to y or n
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; ctrl-k で改行コードも含めて行を削除
+(setq kill-whole-line t)
+
+;; regionを[delete]で一括削除
+(delete-selection-mode t)
+
+;; リージョンが活性化していればリージョン削除
+;; 非活性であれば、直前の単語を削除
+(defun kill-region-or-backward-kill-word ()
+  (interactive)
+  (if (region-active-p)
+      (kill-region (point) (mark))
+    (backward-kill-word 1)))
+
+(global-set-key "\C-w" 'kill-region-or-backward-kill-word)
+
+
+(defun other-window-or-split ()
+  (interactive)
+  (when (one-window-p)
+    (split-window-horizontally))
+  (other-window 1))
+
+(global-set-key (kbd "C-t") 'other-window-or-split)
+
+;; smartparents
+(require 'smartparens-config)
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
+
+;; rainbow-delimiters を使うための設定
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; 括弧の色を強調する設定
+(require 'cl-lib)
+(require 'color)
+(defun rainbow-delimiters-using-stronger-colors ()
+  (interactive)
+  (cl-loop
+   for index from 1 to rainbow-delimiters-max-face-count
+   do
+   (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+    (cl-callf color-saturate-name (face-foreground face) 30))))
+(add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
+
 (setq
    ;; クリップボードでコピー＆ペーストできるようにする
    x-select-enable-clipboard t
