@@ -104,9 +104,9 @@
 (global-set-key (kbd "C-t") 'other-window-or-split)
 
 ;; smartparents
-(require 'smartparens-config)
-(smartparens-global-mode t)
-(show-smartparens-global-mode t)
+;; (require 'smartparens-config)
+;; (smartparens-global-mode t)
+;; (show-smartparens-global-mode t)
 
 ;; rainbow-delimiters を使うための設定
 (require 'rainbow-delimiters)
@@ -148,3 +148,7 @@
 (when (require 'saveplace nil t)
   (setq-default save-place t)
   (setq save-place-file "~/.emacs.d/saved-places"))
+
+(prefer-coding-system 'utf-8)
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
