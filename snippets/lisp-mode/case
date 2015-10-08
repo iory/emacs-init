@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: case
+# key: case
+# binding: direct-keybinding
+# --
+(case ${1:key-form}
+  (${2:match} ${3:result}${4:})
+  (t ${5:otherwise}))

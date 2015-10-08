@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mapc
+# key: mapc
+# binding: direct-keybinding
+# --
+(mapc ${1:func} ${2:list})
+$0

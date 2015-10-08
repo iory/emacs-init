@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: do
+# key: do
+# binding: direct-keybinding
+# --
+(do (${1:vars})
+    (${2:end-test-form} ${3: result})
+  $4
+  )

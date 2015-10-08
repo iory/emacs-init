@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: cond
+# key: cond
+# binding: direct-keybinding
+# --
+(cond (${1:test}
+       ${2:then})
+      (t
+       ${3:else})
+      )

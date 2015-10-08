@@ -1,0 +1,16 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: defclass
+# key: defclass
+# binding: direct-keybinding
+# --
+(defclass ${1:class-name}
+  super: ${2:propertied-object}
+  slots: (${3:var})
+  )
+
+(defmethod $1
+  (:inits
+   ()
+   $4
+   )
+  )
