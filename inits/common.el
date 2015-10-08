@@ -156,12 +156,12 @@
       (split-window-horizontally
        (- (window-width) (/ (window-width) num_wins)))
       (split-window-horizontally-n (- num_wins 1)))))
-(global-set-key "\C-x@" '(lambda ()
-                           (interactive)
-                           (split-window-vertically-n 3)))
-(global-set-key "\C-x#" '(lambda ()
-                           (interactive)
-                           (split-window-horizontally-n 3)))
+;; (global-set-key "\C-x@" '(lambda ()
+;;                            (interactive)
+;;                            (split-window-vertically-n 3)))
+;; (global-set-key "\C-x#" '(lambda ()
+;;                            (interactive)
+;;                            (split-window-horizontally-n 3)))
 
 (setq windmove-wrap-around t)
 (windmove-default-keybindings)
@@ -275,5 +275,18 @@
  ;; ~/.emacs.d/backups 以下に保存する
  backup-directory-alist `(("." . ,(concat user-emacs-directory
                                           "backups"))))
+
+;; for iTerm
+;; modifierd key
+(global-set-key (kbd "C-RET") 'cua-set-rectangle-mark)
+
+(defun event-apply-meta-control-modifier (ignore-prompt)
+  "\\Add the Meta-Control modifier to the following event.
+For example, type \\[event-apply-meta-control-modifier] % to enter Meta-Control-%."
+  (vector (event-apply-modifier
+           (event-apply-modifier (read-event) 'control 26 "C-")
+           'meta 27 "M-")))
+(define-key function-key-map (kbd "C-x @ M") 'event-apply-meta-control-modifier)
+
 
 (provide 'common)
