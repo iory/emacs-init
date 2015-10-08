@@ -170,6 +170,7 @@
  '(anzu-search-threshold 1000)
  '(helm-ff-auto-update-initial-value nil)
  '(safe-local-variable-values (quote ((eval sh-set-shell "zsh") (require-final-newline) (clmemo-mode . t)))))
+(global-set-key (kbd "C-M-%") 'anzu-query-replace)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
