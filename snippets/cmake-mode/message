@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: message
+# key: message
+# binding: direct-keybinding
+# --
+message(${1:STATUS }"$0")
