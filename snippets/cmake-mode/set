@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: set
+# key: set
+# binding: direct-keybinding
+# --
+set(${1:var} ${2:value})

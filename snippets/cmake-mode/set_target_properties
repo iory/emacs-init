@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: set_target_properties
+# key: set_target
+# binding: direct-keybinding
+# --
+set_target_properties(${1:target} PROPERTIES COMPILE_FLAGS "${2:compile_option}")
