@@ -130,6 +130,7 @@
 (require 'common)
 (require 'c-setting)
 (require 'clojure-setting)
+(require 'clipboard-setting)
 (require 'direx-setting)
 (require 'ediff-setting)
 (require 'git-setting)
