@@ -1,7 +1,4 @@
-language:
-  - elisp
-compiler:
-  - gcc
+language: emacs-lisp
 notifications:
   email:
     recipients:
@@ -11,9 +8,14 @@ notifications:
 sudo: required
 env:
   matrix:
+    - EMACS=emacs24
 install:
-  - sudo apt-get -qq update
-  - ln -s emacs-init ${HOME}/.emacs.d
+  - if [ "$EMACS" = 'emacs24' ]; then
+        sudo add-apt-repository -y ppa:cassou/emacs &&
+        sudo apt-get -qq update &&
+        sudo apt-get install -y -qq emacs24 emacs24-el;
+    fi
+  - ln -s ${HOME}/build/iory/emacs-init ${HOME}/.emacs.d
   - cd ${HOME}/.emacs.d
   - ./git_pulls.sh
 script:
