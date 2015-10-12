@@ -5,7 +5,7 @@
 (add-to-list 'package-archives
          '("melpa" . "http://melpa.milkbox.net/packages/")
          '("melpa-stable" . "http://stable.melpa.org/packages/")
-         '("marmalade" ."http://marmalade-repo.org/packages/")
+         ;; '("marmalade" ."http://marmalade-repo.org/packages/")
          )
 
 ;; (global-set-key (kbd "C-x C-c") 'open-junk-file)
