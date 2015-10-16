@@ -4,8 +4,8 @@
 (require 'package)
 (add-to-list 'package-archives
          '("melpa" . "http://melpa.milkbox.net/packages/")
-         '("melpa-stable" . "http://stable.melpa.org/packages/")
-         ;; '("marmalade" ."http://marmalade-repo.org/packages/")
+         ;; '("melpa-stable" . "http://stable.melpa.org/packages/")
+         '("marmalade" ."http://marmalade-repo.org/packages/")
          )
 
 ;; (global-set-key (kbd "C-x C-c") 'open-junk-file)
@@ -37,12 +37,12 @@
     exec-path-from-shell
     evil
     flymake
-    flymake-checkers
+    ;; flymake-checkers
     flylisp
     flymake-cppcheck
     flycheck
     flycheck-google-cpplint
-    fullscreen-mode
+    ;; fullscreen-mode
     gitconfig-mode
     gitignore-mode
     git-gutter
@@ -63,7 +63,7 @@
     ido-vertical-mode
     imenu
     imenus
-    ipython
+    ;; ipython
     jedi
     jedi-direx
     lispxmp
@@ -96,11 +96,21 @@
     volatile-highlights
     visual-regexp-steroids
     yaml-mode
-
     dash
     s
     f
     ))
+
+(when (>= emacs-major-version 24)
+  (when (>= emacs-minor-version 5)
+    (setq installing-package-list
+          (append
+           installing-package-list
+           '(
+             w3m
+             )))
+    )
+  )
 
 ;; automatically install
 (let ((not-installed (loop for x in installing-package-list
@@ -128,7 +138,7 @@
 (require 'tools)
 
 (require 'any-setting)
-;; (require 'byte-compile-setting)
+(require 'byte-compile-setting)
 (require 'auto-complete-setting)
 (require 'common)
 (require 'c-setting)
@@ -138,7 +148,7 @@
 (require 'ediff-setting)
 (require 'git-setting)
 (require 'go-setting)
-(require 'haskell-setting)
+;; (require 'haskell-setting)
 (require 'helm-setting)
 (require 'indent-setting)
 (require 'insert-setting)
@@ -161,7 +171,7 @@
   (require 'ros-setting)
   (require 'mozc-setting))
 
-(fullscreen-mode t)
+;; (fullscreen-mode t)
 (global-set-key (kbd "C-x m") 'magit-status) ;; don't use email on emacs
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
