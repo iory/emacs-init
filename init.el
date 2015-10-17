@@ -16,26 +16,31 @@
 (defvar installing-package-list
   '(
     ;; package list to use
-    auto-async-byte-compile
-    auto-complete
-    auto-complete-c-headers
-    arduino-mode
-    ace-isearch
     ac-cider ;; for clojure
     ac-etags
     ac-haskell-process
+    ace-isearch
     anzu
-    cmake-project
-    cmake-mode
-    clojure-mode ;; for clojure
+    arduino-mode
+    auto-async-byte-compile
+    auto-complete
+    auto-complete-c-headers
     cider ;; for clojure
     clojure-cheatsheet ;; for clojure
-    direx
+    clojure-mode ;; for clojure
+    cmake-mode
+    cmake-project
+    dash
     dired-k
     dired-toggle
+    direx
     dropdown-list
-    exec-path-from-shell
     evil
+    exec-path-from-shell
+    f
+    flycheck
+    flycheck-google-cpplint
+    flylisp
     flymake
     ;; flymake-checkers
     flylisp
@@ -46,19 +51,21 @@
     gitconfig-mode
     gitignore-mode
     git-gutter
+    gitconfig-mode
     github-browse-file
-    go-mode
+    gitignore-mode
     go-autocomplete
+    go-mode
+    haskell-mode
     helm
-    helm-swoop
-    helm-migemo
     helm-ag
     helm-cmd-t
-    helm-projectile
     helm-gtags
-    howdoi
+    helm-migemo
+    helm-projectile
+    helm-swoop
     hiwin
-    haskell-mode
+    howdoi
     ido-occasional
     ido-vertical-mode
     imenu
@@ -83,18 +90,19 @@
     quickrun
     rainbow-delimiters
     redo+
+    s
     save-load-path
     sequential-command
     shell-pop
-    smartparens
-    smart-newline
     slamhound ;; for clojure
+    smart-newline
+    smartparens
     tabbar
     undo-tree
     undohist
     use-package
-    volatile-highlights
     visual-regexp-steroids
+    volatile-highlights
     yaml-mode
     dash
     s
