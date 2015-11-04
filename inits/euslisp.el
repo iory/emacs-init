@@ -11,7 +11,7 @@
          (shell-command->string
           (concatenate #'string "python ~/.emacs.d/bin/find_lispfunction.py " fname)))
       )
-    (split-string paths " ")
+    (split-string paths "\\*\\*\\*\\*")
     )
   )
 

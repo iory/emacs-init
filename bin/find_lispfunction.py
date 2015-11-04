@@ -32,10 +32,10 @@ def main():
                 for c, line in enumerate(f.readlines()):
                     for match in matches:
                         if match.search(line):
-                            fileList.append("***".join([os.path.join(dName, filename), str(c), line.strip()]))
+                            fileList.append("***".join([os.path.join(dName, filename), str(c), line[:-1].lstrip()]))
                             break
     fileList = list(set(fileList))
-    print(" ".join(fileList))
+    print("****".join(fileList))
 
 if __name__ == "__main__":
     main()
