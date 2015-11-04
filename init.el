@@ -154,6 +154,7 @@
 (require 'clipboard-setting)
 (require 'direx-setting)
 (require 'ediff-setting)
+(require 'euslisp)
 (require 'git-setting)
 (require 'go-setting)
 ;; (require 'haskell-setting)
