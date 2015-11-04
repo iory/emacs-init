@@ -3,4 +3,4 @@
 # key: subscriber
 # binding: direct-keybinding
 # --
-(ros::advertise "${0:topic-name}" ${1:msg-type} ${2:queue-size})
+(ros::subscribe "${1:topic-name}" ${1:pkg-name}::${2:msg-name} #'${3:func-name})
