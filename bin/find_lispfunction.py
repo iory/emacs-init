@@ -34,6 +34,13 @@ def main():
                         if match.search(line):
                             fileList.append("***".join([os.path.join(dName, filename), str(c), line[:-1].lstrip()]))
                             break
+    class_path = os.path.join(inDir, "jskeus/eus/doc/classes")
+    with open(class_path, 'r') as f:
+        for c, line in enumerate(f.readlines()):
+            for match in matches:
+                if match.search(line):
+                    fileList.append("***".join([class_path, str(c), line[:-1].lstrip()]))
+                    break
     fileList = list(set(fileList))
     print("****".join(fileList))
 
