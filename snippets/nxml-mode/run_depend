@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: run_depend
+# key: run_depend
+# binding: direct-keybinding
+# --
+<run_depend>${1:pkg_name}</run_depend>

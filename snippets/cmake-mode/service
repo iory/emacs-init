@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: service
+# key: service
+# binding: direct-keybinding
+# --
+add_service_files(
+  FILES
+  ${1:service_file_name}
+)
