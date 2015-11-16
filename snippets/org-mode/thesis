@@ -1,0 +1,32 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: thesis
+# key: thesis
+# binding: direct-keybinding
+# --
+#+startup: beamer
+#+AUTHOR: iori
+#+OPTIONS: toc:nil t:nil
+
+*  ${1:paper-title}
+** ${2:author-name}
+**                                                                    :BMCOL:
+   :PROPERTIES:
+   :BEAMER_COL: 0.45
+   :END:
+*** どんなもの
+    ${3}
+*** 先行研究と比べてどこがすごい？
+    ${4}
+*** 手法やアルゴリズムの肝はどこ？
+    ${5}
+**                                                                    :BMCOL:
+ :PROPERTIES:
+ :BEAMER_COL: 0.45
+ :END:
+
+*** どうやって有効だと検証した？
+    ${6}
+*** 議論はある？
+    ${7}
+*** 次読むべき論文は？
+    ${8}
