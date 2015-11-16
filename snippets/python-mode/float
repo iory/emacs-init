@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: float
+# key: float
+# binding: direct-keybinding
+# --
+float("${1:str}")

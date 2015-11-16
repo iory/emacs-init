@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mp
+# key: mp
+# binding: direct-keybinding
+# --
+import multiprocessing as mp
