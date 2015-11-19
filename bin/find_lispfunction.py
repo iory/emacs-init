@@ -10,9 +10,11 @@ def main():
         sys.exit(1)
     # inDir = roslib.packages.get_pkg_dir('euslisp')
     if os.path.exists("{}/ros/indigo_parent".format(os.getenv("HOME"))):
-        inDir = "{}/ros/indigo_parent/devel/share/euslisp".format(os.getenv("HOME"))
+        inDirs = ["{}/ros/indigo_parent/devel/share/euslisp".format(os.getenv("HOME")),
+                  "{}/ros/indigo/src/jsk-ros-pkg/rbrapp".format(os.getenv("HOME"))]
     elif os.path.exists("{}/ros/hydro_parent".format(os.getenv("HOME"))):
-        inDir = "{}/ros/hydro_parent/devel/share/euslisp".format(os.getenv("HOME"))
+        inDirs = ["{}/ros/hydro_parent/devel/share/euslisp".format(os.getenv("HOME")),
+                  "{}/ros/hydro/src/jsk-ros-pkg/rbrapp".format(os.getenv("HOME"))]
     pattern = sys.argv[1]
     patterns = [
         '\(:{0}'.format(pattern),
@@ -24,23 +26,27 @@ def main():
     matches = [re.compile(p) for p in patterns]
 
     fileList = []
-    for dName, sdName, fList in os.walk(inDir):
-        for filename in fList:
-            if not filename.endswith('.l'):
-                continue
-            with open(os.path.join(dName, filename), 'r') as f:
-                for c, line in enumerate(f.readlines()):
-                    for match in matches:
-                        if match.search(line):
-                            fileList.append("***".join([os.path.join(dName, filename), str(c), line[:-1].lstrip()]))
-                            break
+    for inDir in inDirs:
+        for dName, sdName, fList in os.walk(inDir):
+            for filename in fList:
+                if not filename.endswith('.l'):
+                    continue
+                if not os.path.exists(os.path.join(dName, filename)):
+                    continue
+                with open(os.path.join(dName, filename), 'r') as f:
+                    for c, line in enumerate(f.readlines()):
+                        for match in matches:
+                            if match.search(line):
+                                fileList.append("***".join([os.path.join(dName, filename), str(c), line[:-1].lstrip()]))
+                                break
     class_path = os.path.join(inDir, "jskeus/eus/doc/classes")
-    with open(class_path, 'r') as f:
-        for c, line in enumerate(f.readlines()):
-            for match in matches:
-                if match.search(line):
-                    fileList.append("***".join([class_path, str(c), line[:-1].lstrip()]))
-                    break
+    if os.path.exists(class_path):
+        with open(class_path, 'r') as f:
+            for c, line in enumerate(f.readlines()):
+                for match in matches:
+                    if match.search(line):
+                        fileList.append("***".join([class_path, str(c), line[:-1].lstrip()]))
+                        break
     fileList = list(set(fileList))
     print("****".join(fileList))
 
