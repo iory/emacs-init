@@ -27,6 +27,10 @@
 (setq auto-mode-alist
       (cons (cons "\\.launch" 'xml-mode) auto-mode-alist))
 
+;; cfg as python
+(setq auto-mode-alist
+      (cons (cons "\\.cfg" 'python-mode) auto-mode-alist))
+
 ;; C++ style
 (defun add-c++-mode-conf ()
   (c-set-style "stroustrup")
