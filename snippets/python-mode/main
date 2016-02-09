@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: main
+# key: main
+# binding: direct-keybinding
+# --
+def main():
+    print("hello, python")
+if __name__ == "__main__":
+    main()

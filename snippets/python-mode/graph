@@ -1,0 +1,378 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: graph
+# key: graph
+# binding: direct-keybinding
+# --
+import collections
+
+class Edge(object):
+    def __init__(self, src, dst, weight):
+        self.src = src
+        self.dst = dst
+        self.weight = weight
+    def __str__(self):
+        return "#<{0.__class__.__name__} src={0.src} dst={0.dst} weight={0.weight}>".format(self)
+    def __repr__(self):
+        return self.__str__()
+    def __eq__(self, cls):
+        return self.src==cls.src and self.dst == cls.dst
+    def __lt__(self, cls):
+        return self.weight < cls.weight
+
+class Graph(object):
+    def __init__(self, V=None):
+        self.V = V
+        self.G = collections.defaultdict(list)
+        self.rG = collections.defaultdict(list)
+        self.edge_count = 0
+        self.total_cost = 0
+    def __str__(self):
+        return "#<{0.__class__.__name__}>".format(self)
+    def __repr__(self):
+        return self.__str__()
+    def __iter__(self):
+        for g in self.G:
+            yield g
+
+    def remove_edge(self, u, v, cost=1):
+        try:
+            self.G[u].remove(Edge(u, v, cost))
+            self.rG[v].remove(Edge(v, u, 0))
+            self.edge_count -= 1
+        except ValueError as e:
+            print(e)
+            print(u, v)
+    def add_edge(self, u, v, cost=1):
+        self.G[u].append(Edge(u, v, cost))
+        self.rG[v].append(Edge(v, u, 0))
+        self.edge_count += 1
+        self.total_cost += cost
+    def remove_vertex(self, v):
+        self.edge_count -= len(self.G[v])
+        for rg in self.rG[v]:
+            self.remove_edge(self, rg.dst, rg.src)
+        self.rG.pop(v)
+        self.G.pop(v)
+    def distance(self):
+        self.dist = [[float('inf') for j in range(self.V)] for i in range(self.V)]
+        for v in range(self.V):
+            self.dist[v][v] = 0
+        for g in self.G:
+            for edge in g:
+                self.dist[edge.src][edge.dst] = edge.weight
+                self.dist[edge.dst][edge.src] = edge.weight
+        def Warshall():
+            for k in range(self.V):
+                for i in range(self.V):
+                    for j in range(self.V):
+                        self.dist[i][j] = min(self.dist[i][j], self.dist[i][k] + self.dist[k][j])
+        Warshall()
+        return self.dist
+    def diameter(self):
+        self.distance()
+        ret = -1
+        u, v = -1, -1
+        for i in range(self.V):
+            for j in range(self.V):
+                if self.dist[i][j] != float('inf'):
+                    if ret < self.dist[i][j]:
+                        ret = self.dist[i][j]
+                        u, v = i, j
+        return (ret, u, v)
+    def minimumSpanningTree(self):
+        N = len(self.G)
+        if N==0:
+            return Graph()
+
+        uf = UnionFind(N)
+
+        que = priority_queue()
+        for v, g in self.G.items():
+            for edge in g:
+                que.push(edge, -edge.weight)
+
+        TG = Graph()
+        while len(que):
+            tmp = que.pop()[0]
+            if not uf.is_connected(tmp.src, tmp.dst):
+                uf.unite(tmp.src, tmp.dst)
+                TG.add_edge(tmp.src, tmp.dst, tmp.weight)
+        return TG
+    def minimumDiameterSpanningTree(self):
+        self.distance()
+        dist = self.dist
+        edges = []
+        for g in self.G:
+            for edge in g:
+                if edge.src < edge.dst:
+                    edges.append(edge)
+
+        n = self.V
+        m = len(edges)
+        H = float('inf')
+        theta = [0] * m
+        for r in range(m):
+            u, v = edges[r].src, edges[r].dst
+            d = edges[r].weight
+            for w in range(n):
+                theta[r] = max(theta[r], min(dist[u][w], dist[v][w]))
+            H = min(H, d + 2 * theta[r])
+
+        value = float('inf')
+        for r in range(m):
+            if 2 * theta[r] > H:
+                continue
+            u, v = edges[r].src, edges[r].dst
+            d = edges[r].weight
+            xlst = sorted([(dist[u][w], dist[v][w]) for w in range(n)])
+            p = 0
+            value = min(value, 2 * xlst[0][0])
+            for k in range(n):
+                if xlst[p][1] < xlst[k][1]:
+                    value = min(value, d + xlst[p][1] + xlst[k][0])
+                    p = k
+            value = min(value, 2 * xlst[p][1])
+        if n==1:
+            return 0
+        else:
+            return value
+    def find_path(self, start_vertex, end_vertex, path=[]):
+        """ find a path from start_vertex to end_vertex
+            in graph """
+        path = path + [start_vertex]
+        if start_vertex == end_vertex:
+            return path
+        for edge in self.G[start_vertex]:
+            vertex = edge.dst
+            if vertex not in path:
+                extended_path = self.find_path(vertex,
+                                               end_vertex,
+                                               path)
+                if extended_path:
+                    return extended_path
+        return None
+
+    def find_all_paths(self, start_vertex, end_vertex, path=[]):
+        """ find all paths from start_vertex to
+            end_vertex in graph """
+        path = path + [start_vertex]
+        if start_vertex == end_vertex:
+            return [path]
+        # if start_vertex not in graph:
+        #     return []
+        paths = []
+        for edge in self.G[start_vertex]:
+            vertex = edge.dst
+            if vertex not in path:
+                extended_paths = self.find_all_paths(vertex,
+                                                     end_vertex,
+                                                     path)
+                for p in extended_paths:
+                    paths.append(p)
+        return paths
+
+    def vertexs(self):
+        cnt = 0
+        for v, g in self.G.items():
+            if len(g)>0:
+                cnt += 1
+        return cnt
+
+    def vertex_degree(self, vertex):
+        return len(self.G[vertex])
+
+    def max_vertex_degree(self):
+        mc = 0
+        mv = None
+        for v, g in self.G.items():
+            if mc < len(g):
+                mv = v
+                mc = len(g)
+        return mv, mc
+
+    def min_vertex_degree(self):
+        mc = float('inf')
+        mv = None
+        for v, g in self.rG.items():
+            if mc > len(g):
+                mv = v
+                mc = len(g)
+        return mv, mc
+
+    def dijkstra(self, start):
+        '''
+        @property
+        start: int
+        '''
+        dist = {v: float('inf') for v, g in self.G.items()}
+        for v, g in self.rG.items():
+            dist[v] = float('inf')
+        if self.V:
+            for i in range(self.V):
+                dist[i] = float('inf')
+        used = {}
+        dist[start] = 0
+
+        q = priority_queue()
+        q.push((0, start), 0)
+        while not q.empty():
+            (d, current_node), _ = q.pop()
+            if used.get(current_node) is not None:
+                continue
+            used[current_node] = True
+            dist[current_node] = d
+            for edge in self.G[current_node]:
+                edge_cost = edge.weight
+                next_node = edge.dst
+                if dist[next_node] <= d + edge_cost:
+                    continue
+                q.push((d+edge_cost, next_node), -(d+edge_cost))
+        return dist
+    def shortest_path(self, start):
+        return self.dijkstra(start)
+
+    def WarshallFloyd(self):
+        self.dist = {{}}
+        for v in range(self.V):
+            self.dist[v][v] = 0
+        for g in self.G:
+            for edge in g:
+                self.dist[edge.src][edge.dst] = edge.weight
+                self.dist[edge.dst][edge.src] = edge.weight
+        def Warshall():
+            for k in range(self.V):
+                for i in range(self.V):
+                    for j in range(self.V):
+                        self.dist[i][j] = min(self.dist[i][j], self.dist[i][k] + self.dist[k][j])
+    def all_pairs_shortest_path(self):
+        return self.WarshallFloyd()
+
+    def scc(self):
+        return self.strongly_connected_components()
+    def strongly_connected_components(self):
+        vs = []
+        cc = collections.defaultdict(list)
+        ccc = {}
+        def dfs(v):
+            used[v] = True
+            for edge in self.G[v]:
+                if not used.get(edge.dst):
+                    dfs(edge.dst)
+            vs.append(v)
+        def rdfs(v, k):
+            used[v] = True
+            cc[k].append(v)
+            ccc[v] = k
+            for edge in self.rG[v]:
+                if not used.get(edge.dst):
+                    rdfs(edge.dst, k)
+        used = {}
+        vvv = [vv for vv, g in self.G.items()]
+        for vv in vvv:
+            if not used.get(vv):
+                dfs(vv)
+        used = {}
+        k = 0
+        for vv in reversed(vs):
+            if not used.get(vv):
+                rdfs(vv, k)
+                k += 1
+        return cc, ccc, k
+
+    def has_cycle(self):
+        def rec(v):
+            used[v] = True
+            for edge in self.G[v]:
+                if used.get(edge.dst):
+                    return True
+                elif rec(edge.dst):
+                    return True
+            used[v] = False
+            return False
+        cc, ccc, k = self.scc()
+        for vv in cc.keys():
+            used = {}
+            if rec(vv):
+                return True
+        return False
+
+    def maximumFlow(self, s, t):
+        if self.G.get(s, None) is None or self.G.get(t, None) is None:
+            return 0
+        flow = {v1: {v2: -1 for v2, g2 in self.G.items()} for v1, g1 in self.G.items()}
+        capacity = {v1: {v2: -1 for v2, g2 in self.G.items()} for v1, g1 in self.G.items()}
+        # n = self.V
+        # flow = [[0 for _ in range(n)] for _ in range(n)]
+        # capacity = [[0 for _ in range(n)] for _ in range(n)]
+
+        for vertex, g in self.G.items():
+            for edge in g:
+                capacity[edge.src][edge.dst] += edge.weight
+
+        total = 0
+        while True:
+            que = [s]
+            prev = {v: -1 for v, g in self.G.items()}
+            # prev = [-1 for i in range(n)]
+            prev[s] = s
+            while que and prev[t] < 0:
+                u = que[-1]
+                que.pop()
+                for e in self.G[u]:
+                    if prev[e.dst] < 0 and capacity[u][e.dst] - flow[u][e.dst] > 0:
+                        prev[e.dst] = u
+                        que.append(e.dst)
+            if prev[t] < 0:
+                return total
+            inc = float('inf')
+            j = t
+            while prev[j] != j:
+                inc = min(inc, capacity[prev[j]][j] - flow[prev[j]][j])
+                j = prev[j]
+            j = t
+            while prev[j] != j:
+                flow[prev[j]][j] += inc
+                flow[j][prev[j]] -= inc
+                j = prev[j]
+            total += inc
+
+class Tree(Graph):
+    def __init__(self, V=None):
+        super().__init__(V)
+    def __str__(self):
+        return "#<{0.__class__.__name__}>".format(self)
+    def __repr__(self):
+        return self.__str__()
+    def visit(self, v, prev):
+        """ r = (dist, vertex) """
+        r = (0, v)
+        for edge in self.G[v]:
+            if edge.dst != prev:
+                t = self.visit(edge.dst, v)
+                t = (t[0] + edge.weight, t[1])
+                if r[0] < t[0]:
+                    r = t
+        return r
+    def diameter(self):
+        """ return (dist, start node, end node) """
+        for vv, g in self.G.items():
+            v = vv
+            break
+        r = self.visit(v, -1)
+        t = self.visit(r[1], -1)
+        return (t[0], r[1], t[1])
+
+    def topological(self):
+        used = {}
+        vs = []
+        def visit(v):
+            used[v] = True
+            for edge in self.G[v]:
+                if not used.get(edge.dst):
+                    visit(edge.dst)
+            vs.append(v)
+        vvv = [vertex for vertex, g in self.G.items()]
+        for vertex in vvv:
+            if not used.get(vertex):
+                visit(vertex)
+        return reversed(vs)

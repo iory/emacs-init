@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: getch
+# key: getch
+# binding: direct-keybinding
+# --
+#include <termios.h>
+#include <unistd.h>
+struct termios t;
+tcgetattr(STDIN_FILENO, &t);
+t.c_lflag &= ~ICANON;
+tcsetattr(STDIN_FILENO, TCSANOW, &t);

@@ -1,0 +1,81 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: file
+# key: file
+# binding: direct-keybinding
+# --
+class fileInput {
+public:
+    fileInput(){};
+    fileInput(const std::string filename) :filename_(filename){
+        myfile_.open(filename);
+        if(myfile_.is_open()) {
+        } else {
+            std::cerr << "Unable to open file " << filename << std::endl;
+        }
+    };
+    ~fileInput(){
+        myfile_.close();
+    };
+
+    friend std::ostream& operator<< (std::ostream& os, const fileInput& cls) {
+        os << cls.filename_ << std::endl;
+        return os;
+    }
+    std::vector<std::string> readlines() {
+        std::vector<std::string> v;
+        std::string line;
+        while(std::getline(myfile_, line)) {
+            v.push_back(line);
+        }
+        return v;
+    }
+private:
+    std::ifstream myfile_;
+    std::string filename_;
+};
+
+
+class fileOutput {
+public:
+    fileOutput(){};
+    fileOutput(const std::string filename) : filename_(filename) {
+        myfile_.open(filename, ios::app);
+        if(myfile_.is_open()) {
+
+        }
+        else {
+            std::cerr << "Unable to open file " << filename << std::endl;
+        }
+        myfile_.close();
+    };
+
+    ~fileOutput(){
+        myfile_.close();
+    };
+
+    friend std::ostream& operator<< (std::ostream& os, const fileOutput& cls) {
+        os << cls.filename_ << std::endl;
+        return os;
+    }
+
+    fileOutput& operator<< (std::string str) {
+        myfile_.open(filename_, ios::app);
+        if(myfile_.is_open()) {
+            myfile_ << str;
+            myfile_.close();
+        }
+        return *this;
+    }
+
+    friend std::istream& operator>> (std::istream& input, fileOutput& cls) {
+        std::string line;
+        input >> line;
+        cls.myfile_ << line;
+        return input;
+    }
+
+
+private:
+    std::string filename_;
+    std::ofstream myfile_;
+};

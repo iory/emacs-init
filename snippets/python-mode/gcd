@@ -1,0 +1,23 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: gcd
+# key: gcd
+# binding: direct-keybinding
+# --
+def gcd(a, b):
+    while b != 0:
+        remainder = a % b
+        a = b
+        b = remainder
+    return a
+
+def gcd2(a, b):
+    if b == 0:
+        u = 1
+        v = 0
+    else:
+        q = a / b
+        r = a % b
+        (u0, v0) = gcd2(b, r)
+        u = v0
+        v = u0 - q * v0
+    return (u, v)

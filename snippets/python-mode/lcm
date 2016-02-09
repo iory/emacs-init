@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: mapint
-# key: mapint
+# name: lcm
+# key: lcm
 # binding: direct-keybinding
 # --
-map(int, input().split())
+def lcm(a, b):
+    return a // gcd(a, b) * b

@@ -1,0 +1,23 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: fibo
+# key: fibo
+# binding: direct-keybinding
+# --
+def fibo_gen():
+    a, b = 1, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+def fibo(n):
+    if n <= 0:
+        return 1
+    return nth(fibo_gen(), n-1)
+
+def fibo_less_than_gen(upper_limit):
+    f = fibo_gen()
+    tmp = next(f)
+    while tmp < upper_limit:
+        yield tmp
+        tmp = next(f)
+    f.close()

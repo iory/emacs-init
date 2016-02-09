@@ -33,7 +33,7 @@
 
 ;; if you like ubuntu default terminal background color,
 ;; comment out following line.
-;; (set-foreground-color "white")
+(set-foreground-color "white")
 ;; (set-background-color "#300A24")
 
 ;; inhibit startup screen

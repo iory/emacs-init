@@ -1,0 +1,59 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: is_prime
+# key: is_prime
+# binding: direct-keybinding
+# --
+import itertools
+import random
+
+def prime_gen():
+    yield 2
+    comp_dict = {}
+    for num in itertools.islice(itertools.count(3),0,None,2):
+        p = comp_dict.pop(num,None)
+        if p is not None:
+            test = num + 2*p
+            while test in comp_dict:
+                test = test + 2*p
+            comp_dict[test] = p
+        else:
+            comp_dict[num*num] = num
+            yield num
+
+def is_prime(num):
+    result = True
+    if num < 4:
+        if (num != 2 and num != 3):
+            result = False
+    else:
+        nsqrt = int(num**0.5) + 1
+        mygen = prime_gen()
+        for p in mygen:
+            if p > nsqrt:
+                break
+            if num%p == 0:
+                result = False
+                break
+        mygen.close()
+    return result
+
+def is_prime2(q,k=50):
+    """ Miller-Rabin """
+    q = abs(q)
+    if q == 2: return True
+    if q < 2 or q&1 == 0: return False
+
+    d = (q-1)>>1
+    while d&1 == 0:
+        d >>= 1
+
+    for i in xrange(k):
+        a = random.randint(1,q-1)
+        t = d
+        y = pow(a,t,q)
+        while t != q-1 and y != 1 and y != q-1:
+            y = pow(y,2,q)
+            t <<= 1
+        if y != q-1 and t&1 == 0:
+            return False
+    return True

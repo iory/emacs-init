@@ -41,5 +41,6 @@
   '(add-to-list 'ac-modes 'haskell-interactive-mode))
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 (provide 'haskell-setting)

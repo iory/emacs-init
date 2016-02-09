@@ -7,7 +7,7 @@
 
 ;; Add C++ command for C11 and set it default in C++ file.
 (quickrun-add-command "c++/clang++"
-                      '((:command . "clang++")
+                      '((:command . "g++")
                         (:exec . ("%c -std=c++11 -lstdc++ %o -o %e %s"
                                      "%e %a"))
                         (:remove . ("%e")))

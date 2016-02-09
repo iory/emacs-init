@@ -18,7 +18,8 @@ class priority_queue(object):
         self.index += 1
     def pop(self):
         self.index -= 1
-        return heapq.heappop(self.queue)
+        tmp = heapq.heappop(self.queue)
+        return (tmp[2], -tmp[0])
     def top(self):
         return self.queue[0]
     def __str__(self):
@@ -30,3 +31,6 @@ class priority_queue(object):
             return False
         else:
             return True
+
+    def __len__(self):
+        return len(self.queue)

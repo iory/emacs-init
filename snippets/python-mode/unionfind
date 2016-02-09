@@ -1,0 +1,52 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: unionfind
+# key: unionfind
+# binding: direct-keybinding
+# --
+class UnionFind(object):
+    def __init__(self, N=0, root_node=0):
+        self.N = N
+        self.root_node = root_node
+        self.par = collections.defaultdict()
+        self.rank = collections.defaultdict()
+    def __str__(self):
+        return "#<{0.__class__.__name__}>".format(self)
+    def __repr__(self):
+        return self.__str__()
+
+    def add_node(self, v):
+        self.par[v] = v
+        self.rank[v] = 1
+    def find(self, x):
+        if self.par[x] == x:
+            return x;
+        else:
+            self.par[x] = self.find(self.par[x])
+            return self.par[x]
+    def key_check(self, x, y):
+        if self.par.get(x) is None:
+            self.add_node(x)
+        if self.par.get(y) is None:
+            self.add_node(y)
+    def is_connected(self, x, y):
+        self.key_check(x, y)
+        return self.find(x) == self.find(y)
+    def unite(self, x, y):
+        self.key_check(x, y)
+        x = self.par[x]
+        y = self.par[y]
+        if x == y:
+            return
+        rank = self.rank
+        if rank[x] < rank[y]:
+            self.par[x] = y
+        else:
+            self.par[y] = x
+            if rank[x] == rank[y]:
+                rank[x] += 1
+    def are_connected(self, x):
+        cnt = 0
+        for i in range(self.N):
+            if self.is_connected(x, i):
+                cnt += 1
+        return cnt

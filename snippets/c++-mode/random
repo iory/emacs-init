@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: random
+# key: random
+# binding: direct-keybinding
+# --
+std::default_random_engine generator;
+std::uniform_int_distribution<int> distribution(1,6);
+int dice_roll = distribution(generator);
