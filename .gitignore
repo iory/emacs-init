@@ -11,10 +11,12 @@
 
 !/bin/emacs-shell
 
-history
 *.*~
 *.dat
-session.*
+history
 places
 recentf
+saved-places
+session.*
+shellenv.el
 tramp
