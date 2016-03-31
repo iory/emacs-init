@@ -214,3 +214,5 @@
 
 ;; change font size
 (set-face-attribute 'default nil :height 110)
+
+(load "~/.emacs.d/shellenv.el")

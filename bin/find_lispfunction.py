@@ -3,18 +3,19 @@
 
 import os
 import re
+import roslib
 
 def main():
     import sys
-    if len(sys.argv[1:]) != 1:
+    if len(sys.argv[1:]) < 1:
         sys.exit(1)
-    # inDir = roslib.packages.get_pkg_dir('euslisp')
-    if os.path.exists("{}/ros/indigo_parent".format(os.getenv("HOME"))):
-        inDirs = ["{}/ros/indigo_parent/devel/share/euslisp".format(os.getenv("HOME")),
-                  "{}/ros/indigo/src/jsk-ros-pkg/rbrapp".format(os.getenv("HOME"))]
-    elif os.path.exists("{}/ros/hydro_parent".format(os.getenv("HOME"))):
-        inDirs = ["{}/ros/hydro_parent/devel/share/euslisp".format(os.getenv("HOME")),
-                  "{}/ros/hydro/src/jsk-ros-pkg/rbrapp".format(os.getenv("HOME"))]
+    inDirs = []
+    inDirs.extend([roslib.packages.get_pkg_dir('euslisp'),
+                   roslib.packages.get_pkg_dir('roseus'),
+    ])
+    inDirs.extend(sys.argv[1:])
+    # print(inDirs)
+
     pattern = sys.argv[1]
     patterns = [
         '\(:{0}'.format(pattern),
@@ -39,7 +40,7 @@ def main():
                             if match.search(line):
                                 fileList.append("***".join([os.path.join(dName, filename), str(c), line[:-1].lstrip()]))
                                 break
-    class_path = os.path.join(inDir, "jskeus/eus/doc/classes")
+    class_path = os.path.join(roslib.packages.get_pkg_dir('euslisp'), "jskeus/eus/doc/classes")
     if os.path.exists(class_path):
         with open(class_path, 'r') as f:
             for c, line in enumerate(f.readlines()):
