@@ -143,76 +143,85 @@
 (add-to-list 'load-path "~/.emacs.d/inits/")
 (load "~/.emacs.d/site-lisp-path.el")
 
-(require 'tools)
+(when (not (display-graphic-p))
+  (require 'common)
+  (require 'any-setting)
+  (require 'direx-setting)
+  (require 'euslisp)
+  (require 'python-setting)
+  (require 'helm-setting)
+  )
 
-(require 'any-setting)
-(require 'byte-compile-setting)
-(require 'auto-complete-setting)
-(require 'common)
-(require 'c-setting)
-(require 'clojure-setting)
-(require 'clipboard-setting)
-(require 'direx-setting)
-(require 'ediff-setting)
-(require 'euslisp)
-(require 'git-setting)
-(require 'go-setting)
-;; (require 'haskell-setting)
-(require 'helm-setting)
-(require 'indent-setting)
-(require 'insert-setting)
-(require 'markdown-setting)
-(require 'python-setting)
-(require 'powerline-setting)
-(require 'quickrun-setting)
-;; (require 'ruby-setting)
-(require 'roseus-setting)
-(require 'server-setting)
-(require 'sh-setting)
-(require 'tex-setting)
-(require 'trr-setting)
-;; (require 'tab-setting)
-(require 'utility)
-(require 'yasnippet-setting)
+(when (display-graphic-p)
+  (require 'tools)
+  (require 'any-setting)
+  (require 'byte-compile-setting)
+  (require 'auto-complete-setting)
+  (require 'common)
+  (require 'c-setting)
+  (require 'clojure-setting)
+  (require 'clipboard-setting)
+  (require 'direx-setting)
+  (require 'ediff-setting)
+  (require 'euslisp)
+  (require 'git-setting)
+  (require 'go-setting)
+  ;; (require 'haskell-setting)
+  (require 'helm-setting)
+  (require 'indent-setting)
+  (require 'insert-setting)
+  (require 'markdown-setting)
+  (require 'python-setting)
+  (require 'powerline-setting)
+  (require 'quickrun-setting)
+  ;; (require 'ruby-setting)
+  (require 'roseus-setting)
+  (require 'server-setting)
+  (require 'sh-setting)
+  (require 'tex-setting)
+  (require 'trr-setting)
+  ;; (require 'tab-setting)
+  (require 'utility)
+  (require 'yasnippet-setting)
 
-;; using ROS on Ubuntu
-(when (eq system-type 'gnu/linux)
-  (require 'ros-setting)
-  (require 'mozc-setting))
+  ;; using ROS on Ubuntu
+  (when (eq system-type 'gnu/linux)
+    (require 'ros-setting)
+    (require 'mozc-setting))
+  ;; (fullscreen-mode t)
+  (global-set-key (kbd "C-x m") 'magit-status) ;; don't use email on emacs
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(anzu-deactivate-region t)
+   '(anzu-mode-lighter "")
+   '(anzu-search-threshold 1000)
+   '(helm-ff-auto-update-initial-value nil)
+   '(safe-local-variable-values (quote ((eval sh-set-shell "zsh") (require-final-newline) (clmemo-mode . t)))))
+  (global-set-key (kbd "M-%") 'anzu-query-replace)
+  (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
 
-;; (fullscreen-mode t)
-(global-set-key (kbd "C-x m") 'magit-status) ;; don't use email on emacs
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(anzu-deactivate-region t)
- '(anzu-mode-lighter "")
- '(anzu-search-threshold 1000)
- '(helm-ff-auto-update-initial-value nil)
- '(safe-local-variable-values (quote ((eval sh-set-shell "zsh") (require-final-newline) (clmemo-mode . t)))))
-(global-set-key (kbd "M-%") 'anzu-query-replace)
-(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  ;; (setq shell-pop-shell-type '("eshell" "*eshell*" (lambda () (eshell))))
+  (setq shell-pop-shell-type '("shell" "*shell*" (lambda () (shell))))
+  ;; (setq shell-pop-shell-type '("terminal" "*terminal*" (lambda () (term shell-pop-term-shell))))
+  ;; (setq shell-pop-shell-type '("ansi-term" "*ansi-term*" (lambda () (ansi-term shell-pop-term-shell))))
+  (global-set-key (kbd "C-c s") 'shell-pop)
 
-;; (setq shell-pop-shell-type '("eshell" "*eshell*" (lambda () (eshell))))
-(setq shell-pop-shell-type '("shell" "*shell*" (lambda () (shell))))
-;; (setq shell-pop-shell-type '("terminal" "*terminal*" (lambda () (term shell-pop-term-shell))))
-;; (setq shell-pop-shell-type '("ansi-term" "*ansi-term*" (lambda () (ansi-term shell-pop-term-shell))))
-(global-set-key (kbd "C-c s") 'shell-pop)
+  (prefer-coding-system 'utf-8)
+  (setq coding-system-for-read 'utf-8)
+  (setq coding-system-for-write 'utf-8)
 
-(prefer-coding-system 'utf-8)
-(setq coding-system-for-read 'utf-8)
-(setq coding-system-for-write 'utf-8)
+  ;; change font size
+  (set-face-attribute 'default nil :height 110)
 
-;; change font size
-(set-face-attribute 'default nil :height 110)
-
-(load "~/.emacs.d/shellenv.el")
+  (load "~/.emacs.d/shellenv.el")
+)
