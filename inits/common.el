@@ -49,9 +49,21 @@
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "#b14770")
 
-(setq ansi-color-names-vector
-      ["black" "red" "green3" "gold1" "deep sky blue" "magenta" "cyan" "white"])
-(setq ansi-color-map (ansi-color-make-color-map))
+
+(when (display-graphic-p)
+  (setq ansi-color-names-vector
+        ["black" "red" "green3" "gold1" "deep sky blue" "magenta" "cyan" "white"])
+  (setq ansi-color-map (ansi-color-make-color-map))
+  (setq default-frame-alist
+        (append
+         (list
+          '(background-color . "black")
+          '(foreground-color . "#55FF55")
+          '(cursor-color . "#00AA00")
+          )
+         default-frame-alist)
+        )
+  )
 
 ;; yes or no to y or n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -227,17 +239,6 @@
 
 (do-not-exit-view-mode-unless-writable-advice view-mode-exit)
 (do-not-exit-view-mode-unless-writable-advice view-mode-disable)
-
-
-(setq default-frame-alist
-      (append
-       (list
-        '(background-color . "black")
-        '(foreground-color . "#55FF55")
-        '(cursor-color . "#00AA00")
-        )
-       default-frame-alist)
-      )
 
 (defun kill-region-or-backward-kill-word ()
   (interactive)
