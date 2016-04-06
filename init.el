@@ -224,5 +224,7 @@
   ;; change font size
   (set-face-attribute 'default nil :height 110)
 
-  (load "~/.emacs.d/shellenv.el")
+  (when (file-exists-p "~/.emacs.d/shellenv.el")
+    (load "~/.emacs.d/shellenv.el")
+    )
 )
