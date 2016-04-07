@@ -50,7 +50,8 @@
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
 
 ;; ag
-(setq helm-ag-base-command "ag --nocolor --nogroup -n")
+;; (setq helm-ag-base-command "ag --nocolor --nogroup -n")
+(setq helm-ag-base-command "ag --nocolor --nogroup") ;; recursive search
 (global-set-key (kbd "C-,") 'helm-ag)
 
 (defun helm-ag-dot-emacs ()

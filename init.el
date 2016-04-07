@@ -188,6 +188,7 @@
   (when (eq system-type 'gnu/linux)
     (require 'ros-setting)
     (require 'mozc-setting))
+
   ;; (fullscreen-mode t)
   (global-set-key (kbd "C-x m") 'magit-status) ;; don't use email on emacs
   (custom-set-variables

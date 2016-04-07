@@ -96,6 +96,7 @@
                (let ((xlst (split-string x "\\*\\*\\*")))
                  (find-file (car xlst))
                  (goto-line (1+ (string-to-number (cadr xlst))))
+                 (forward-char (string-match fname (buffer-substring-no-properties (point-at-bol) (point-at-eol))))
                  ))
     :migemo t))
 
