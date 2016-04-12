@@ -3,4 +3,4 @@
 # key: gdb
 # binding: direct-keybinding
 # --
-launch-prefix="xterm -e gdb --args"
+launch-prefix="xterm -e gdb --args

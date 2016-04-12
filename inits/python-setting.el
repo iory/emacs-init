@@ -45,4 +45,6 @@
       (if help (message "%s" help)))))
 (add-hook 'post-command-hook 'flymake-show-help)
 
+(setq auto-mode-alist (cons '("\\.pyx\\'" . python-mode) auto-mode-alist))
+
 (provide 'python-setting)
